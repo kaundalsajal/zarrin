@@ -9,8 +9,8 @@ import Typography from './typography/Typography'
 
 function RecentPost() {
   return (
-    <div className='w-308 mt-20.25'>
-      <div className='flex justify-between'>
+    <div className='container max-w-308 mt-20.25'>
+      <div className='continer flex justify-between'>
         <Typography variant='h3' className='font-bold'>
           Our Recent Post
         </Typography>
@@ -20,11 +20,11 @@ function RecentPost() {
           </Typography>
         </Button>
       </div>
-      <div className='mt-24 flex gap-14'>
+      <div className='container mt-24 flex md:flex-row flex-col gap-14'>
         <div>
           <Image alt="Recent Post" src={recentPost.image} height={456} width={712} />
         </div>
-        <div>
+        <div className='container'>
           <div className='flex gap-3'>
             <Typography variant='overline' className='font-bold'>
               {recentPost.category}
@@ -55,7 +55,7 @@ function RecentPost() {
 
       {/* Recent Post Cards */}
 
-      <div className='mt-15.75 grid grid-cols-3 gap-4'>
+      <div className='mt-15.75 container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
         {
           recentPosts.map((post) => <BlogCard post={post} key={post.id} />)
         }

@@ -5,9 +5,9 @@ import Button from './ui/Button'
 import Typography from './typography/Typography'
 function FeaturedBlog() {
   return (
-    <div className='relative w-308 h-174 mt-32.75'>
+    <div className='contianer relative max-w-308 mt-32.75'>
       <Image alt="Featured Blog Image" src={featuredBlog.image} height={576} width={1232} />
-      <div className='absolute bottom-0 right-0 w-230 h-90 rounded-2xl p-8 bg-white'>
+      <div className='absolute bottom-0 right-0 max-w-230  rounded-2xl p-8 bg-white'>
         <div className='flex gap-3'>
           <Typography variant='overline' className='font-bold'>
             {featuredBlog.category}
@@ -27,7 +27,7 @@ function FeaturedBlog() {
           </Typography>
         </div>
         <div className='mt-12'>
-          <Button variant='purpleOutline' className='w-31.25 h-10'>
+          <Button variant='purpleOutline' className='w-31.25'>
             <Typography variant='button' color='primary'>
               {featuredBlog.buttonText}
             </Typography>

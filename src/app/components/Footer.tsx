@@ -7,7 +7,7 @@ import { companyName } from '../data/navbar-data'
 function Footer() {
 
   return (
-    <div className='w-308 h-99.25 mt-12.75 flex flex-col items-center'>
+    <div className='container max-w-308 mt-12.75 flex flex-col items-center'>
       <div className='flex items-center gap-4'>
         <Image alt='logo' src={companyName.logo} height={44} width={44} />
         <Typography variant='h4' className='font-extrabold'>
@@ -33,10 +33,10 @@ function Footer() {
           </div>
         ))}
       </div>
-      <div className='w-308 mt-10'>
+      <div className='w-full mt-10'>
         <hr className="border border-primary" />
       </div>
-      <div className='mt-10'>
+      <div className='my-10'>
         <Typography variant='body-sm' className='font-400 font-heading'>
           {footerCopyright}
         </Typography>

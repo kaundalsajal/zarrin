@@ -10,3 +10,9 @@
   --font-body: var(--font-roboto);
   --font-heading: var(--font-raleway);
 }
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4;
+  }
+}

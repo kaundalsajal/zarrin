@@ -7,7 +7,7 @@ import { companyName, navLinks } from '../data/navbar-data'
 function NavBar() {
 
   return (
-    <div className='w-308 h-14 my-5.25 flex items-center justify-between'>
+    <div className='container max-w-308 my-5.25 flex items-center justify-between'>
       <div >
         <Link href="/">
           <div className='flex items-center gap-4'>

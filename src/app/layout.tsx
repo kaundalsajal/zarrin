@@ -12,7 +12,7 @@ const roboto = Roboto({
 
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["100","400", "500", "600", "700"],
   variable: "--font-raleway",
 });
 

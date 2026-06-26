@@ -8,7 +8,7 @@ function BlogCard({ post }: {
   post: Post
 }) {
   return (
-    <div className='h-157.5 w-100'>
+    <div className='container max-w-100'>
       <div>
         <Image alt='Post Image' src={post.image} width={400} height={360} />
       </div>
@@ -25,12 +25,12 @@ function BlogCard({ post }: {
           {post.title}
         </Typography>
       </div>
-      <div>
-        <Typography variant='body-sm'>
+      <div className='mt-4'>
+        <Typography variant='body-sm' color='text-secondary'>
           {post.description}
         </Typography>
       </div>
-      <div className='mt-4'>
+      <div className='mt-4.75'>
         <Link href={`blog/${post.id}`}>
           <Typography variant='body-lg' color='primary' className='underline font-heading font-bold'>
             Read More...
