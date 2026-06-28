@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${roboto.variable} ${raleway.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAFAFA]">{children}</body>
+      <body className="min-h-full w-screen flex flex-col bg-[#FAFAFA]">{children}</body>
     </html>
   );
 }

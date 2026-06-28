@@ -7,14 +7,14 @@ import { companyName } from '../data/navbar-data'
 function Footer() {
 
   return (
-    <div className='container max-w-308 mt-12.75 flex flex-col items-center'>
+    <footer className='container max-w-308 mt-12.75 flex flex-col items-center'>
       <div className='flex items-center gap-4'>
         <Image alt='logo' src={companyName.logo} height={44} width={44} />
         <Typography variant='h4' className='font-extrabold'>
           {companyName.name}
         </Typography>
       </div>
-      <div className='h-6 w-91.5 mt-10 flex items-center justify-between'>
+      <div className='w-65.5 lg:w-91.5 mt-10 flex items-center justify-between'>
         {footerNavlinks.map((link, index) => <Link href={link.href} key={index}>
           <Typography variant='body-sm' className='font-400 font-heading'>
             {link.name}
@@ -41,7 +41,7 @@ function Footer() {
           {footerCopyright}
         </Typography>
       </div>
-    </div>
+    </footer>
   )
 }
 

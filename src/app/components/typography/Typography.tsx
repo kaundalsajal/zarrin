@@ -28,7 +28,7 @@ function Typography({ variant, children, color="text-primary", className = ""}: 
     h6: "font-heading text-[17px] lg:text-[24px]",
 
     "body-lg": "font-body text-[13px] lg:text-[18px] leading-6",
-    "body-sm": "font-body text-[11] lg:text-[16px] leading-6",
+    "body-sm": "font-body text-[11px] lg:text-[16px] leading-6",
 
     caption: "font-body text-[14px]",
     button: "font-body text-[10px] md:text-[12px] lg:text-[16px] font-medium font-weight-bold",

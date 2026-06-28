@@ -13,6 +13,8 @@ export const companyName = {
   logo: "/navbar/logo.png",
 };
 
+export const mobileSideMenuLogo = "/navbar/menu.png"
+
 export const navLinks:NavLinks = {
   links: [
     { name: "Blog", href: "/blog" },

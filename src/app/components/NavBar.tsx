@@ -3,11 +3,11 @@ import Link from 'next/link'
 import React from 'react'
 import Button from './ui/Button'
 import Typography from './typography/Typography'
-import { companyName, navLinks } from '../data/navbar-data'
+import { companyName, navLinks, mobileSideMenuLogo } from '../data/navbar-data'
 function NavBar() {
 
   return (
-    <div className='container max-w-308 my-5.25 flex items-center justify-between'>
+    <nav className='container max-w-360 py-5 md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between'>
       <div >
         <Link href="/">
           <div className='flex items-center gap-4'>
@@ -21,7 +21,7 @@ function NavBar() {
           </div>
         </Link>
       </div>
-      <div className='flex items-center h-14 w-104.75 justify-between'>
+      <div className='hidden md:flex items-center h-14 w-104.75 justify-between'>
 
         {
 
@@ -48,8 +48,10 @@ function NavBar() {
         }
 
       </div>
-
-    </div>
+      <div className='md:hidden'>
+        <Image alt='Mobile side menu logog' src={mobileSideMenuLogo} height={34} width={34}></Image>
+      </div>
+    </nav>
   )
 }
 
