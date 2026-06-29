@@ -35,6 +35,10 @@ function Typography({ variant, children, color="foreground", className = ""}: {
     overline: "font-body text-[8px] lg:text-[12px]",
   };
   
+  // const colors = {
+  //   primary:"text-", foreground:, secondary:, muted:, white:,
+  // }
+
   return (
     <span className={` ${styles[variant]} text-${color} ${className}`}>
       {children}

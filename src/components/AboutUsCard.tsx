@@ -1,0 +1,27 @@
+import { step } from "@/data/aboutus-page";
+import Typography from "./typography/Typography";
+
+function AboutUsCard({ step }: { step: step }) {
+  return (
+    <div className=" group max-w-100 rounded-2xl flex flex-col p-6  hover:bg-primary">
+      <Typography variant="h1" className="font-bold" color="muted">
+        <span className="group-hover:text-white">{step.id}</span>
+      </Typography>
+      <Typography variant="h6" color="primary" className="font-bold">
+        <span className="group-hover:text-white">{step.title}</span>
+      </Typography>
+      <Typography variant="body-sm" color="muted" className="mt-4">
+        <span className="group-hover:text-white">{step.description}</span>
+      </Typography>
+      <Typography
+        variant="caption"
+        className="underline underline-offset-6 decoration-4 font-bold mt-8"
+        color="white"
+      >
+        Learn More
+      </Typography>
+    </div>
+  );
+}
+
+export default AboutUsCard;

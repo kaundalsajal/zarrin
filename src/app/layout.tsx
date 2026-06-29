@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import {Roboto, Raleway } from "next/font/google";
 import "./globals.css";
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
+import Footer from "@/components/Footer";
+import NavBar from "@/components/NavBar";
+import NewsletterForm from "@/components/NewsletterForm";
 
 
 
@@ -36,7 +37,8 @@ export default function RootLayout({
       <body className="min-h-full m- bg-[#FAFAFA]">
         <NavBar />
         {children}
-        <Footer/>
+        <NewsletterForm />
+        <Footer />
       </body>
     </html>
   );

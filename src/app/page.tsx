@@ -1,8 +1,7 @@
-import FeaturedBlog from "./components/FeaturedBlog";
-import Hero from "./components/Hero";
-import NewsletterForm from "./components/NewsletterForm";
-import PopularPost from "./components/PopularPost";
-import RecentPost from "./components/RecentPost";
+import Hero from "@/components/Hero";
+import FeaturedBlog from "@/components/FeaturedBlog";
+import PopularPost from "@/components/PopularPost";
+import RecentPost from "@/components/RecentPost";
 
 export default function Home() {
   return (
@@ -11,7 +10,6 @@ export default function Home() {
       <FeaturedBlog />
       <RecentPost />
       <PopularPost />
-      <NewsletterForm />
     </div>
   );
 }

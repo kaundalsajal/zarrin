@@ -27,7 +27,7 @@ function NewsletterForm() {
             </Typography>
           </div>
           <form>
-            <div className="flex justify-center gap-2 mt-12">
+            <div className="flex justify-center gap-2 mt-6 md:mt-12">
               <input
                 name="email"
                 className="h-9.5 w-54.5 lg:h-14 lg:w-[320px] border-none outline-0 bg-white text-text-primary px-5.75 rounded-lg"

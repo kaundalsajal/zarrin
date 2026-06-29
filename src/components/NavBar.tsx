@@ -27,7 +27,7 @@ function NavBar() {
 
           //NavBar Links
 
-          navLinks?.links?.map((link, index) => <Link href={"/blog"} key={index}>
+          navLinks?.links?.map((link, index) => <Link href={link.href} key={index}>
             <Typography variant='body-sm' className='font-heading font-medium hover:text-primary'>
               {link.name}
             </Typography>
@@ -44,7 +44,7 @@ function NavBar() {
                 </Typography>
               </Button>
             </Link>
-          })
+          }) || "Button should appear here"
         }
 
       </div>

@@ -1,11 +1,10 @@
-import React from 'react'
-import { recentPost } from '../data/home-page'
-import Button from './ui/Button'
-import Image from 'next/image'
-import { recentPosts } from '../data/home-page'
-import BlogCard from './BlogCard'
-import Typography from './typography/Typography'
-
+import React from "react";
+import { recentPost } from "../data/home-page";
+import Button from "./ui/Button";
+import Image from "next/image";
+import { recentPosts } from "../data/home-page";
+import BlogCard from "./BlogCard";
+import Typography from "./typography/Typography";
 
 function RecentPost() {
   return (
@@ -24,7 +23,7 @@ function RecentPost() {
         </Button>
       </div>
       <div className="mt-16 lg:mt-22.5 hidden md:flex md:flex-row flex-col gap-14">
-        <div className="">
+        <div className="basis-290">
           <Image
             alt="Recent Post"
             src={recentPost.image}
@@ -70,4 +69,4 @@ function RecentPost() {
   );
 }
 
-export default RecentPost
+export default RecentPost;
