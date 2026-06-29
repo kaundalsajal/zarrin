@@ -6,7 +6,7 @@ import Typography from "./typography/Typography";
 
 function BlogCard({ post }: { post: Post }) {
   return (
-    <div className="container max-w-100">
+    <div className="max-w-100">
       <div>
         <Image alt="Post Image" src={post.image} width={400} height={360} />
       </div>
@@ -16,7 +16,7 @@ function BlogCard({ post }: { post: Post }) {
         </Typography>
         <Typography
           variant="overline"
-          color="text-muted"
+          color="muted"
           className="font-medium"
         >
           {post.date}
@@ -28,7 +28,7 @@ function BlogCard({ post }: { post: Post }) {
         </Typography>
       </div>
       <div className="mt-4">
-        <Typography variant="body-sm" color="text-secondary">
+        <Typography variant="body-sm" color="secondary">
           {post.description}
         </Typography>
       </div>

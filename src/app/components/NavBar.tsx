@@ -7,7 +7,7 @@ import { companyName, navLinks, mobileSideMenuLogo } from '../data/navbar-data'
 function NavBar() {
 
   return (
-    <nav className='container max-w-360 py-5 md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between'>
+    <nav className='container max-w-360 py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between'>
       <div >
         <Link href="/">
           <div className='flex items-center gap-4'>

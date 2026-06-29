@@ -12,17 +12,17 @@ type TypographyVariant =
   | "button"
   | "overline";
 
-function Typography({ variant, children, color="text-primary", className = ""}: {
+function Typography({ variant, children, color="foreground", className = ""}: {
   variant: TypographyVariant,
   children: React.ReactNode,
-  color?: "primary" | "text-primary" | "text-secondary" | "text-muted" | "white" ,
+  color?: "primary" | "foreground" | "secondary" | "muted" | "white" ,
   className?: string
 }) {
 
   const styles = {
     h1: "font-heading text-[36px] md:text-[46px] lg:text-[64px]",
     h2: "font-heading text-[52px]",
-    h3: "font-heading text-[34px] md:text-[37px] lg:text-[48px]",
+    h3: "font-heading text-[24px] md:text-[37px] lg:text-[48px]",
     h4: "font-heading text-[24px] lg:text-[32px]",
     h5: "font-heading text-[26px]",
     h6: "font-heading text-[17px] lg:text-[24px]",
@@ -34,6 +34,7 @@ function Typography({ variant, children, color="text-primary", className = ""}: 
     button: "font-body text-[10px] md:text-[12px] lg:text-[16px] font-medium font-weight-bold",
     overline: "font-body text-[8px] lg:text-[12px]",
   };
+  
   return (
     <span className={` ${styles[variant]} text-${color} ${className}`}>
       {children}

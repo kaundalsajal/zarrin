@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import {Roboto, Raleway } from "next/font/google";
 import "./globals.css";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 
 
 
@@ -31,7 +33,11 @@ export default function RootLayout({
       lang="en"
       className={`${roboto.variable} ${raleway.variable} h-full antialiased`}
     >
-      <body className="min-h-full w-screen flex flex-col bg-[#FAFAFA]">{children}</body>
+      <body className="min-h-full m- bg-[#FAFAFA]">
+        <NavBar />
+        {children}
+        <Footer/>
+      </body>
     </html>
   );
 }

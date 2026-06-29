@@ -1,18 +1,20 @@
 @import "tailwindcss";
+
 @theme {
+  --color-primary: #7c4ee0;
 
-  --color-primary: #7C4EE0;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-text-muted: #999999;
-  --color-white: #FFFFFF;
+  --color-foreground: #333333;
+  --color-secondary: #666666;
+  --color-muted: #999999;
 
+  --color-white: #ffffff;
+  
   --font-body: var(--font-roboto);
   --font-heading: var(--font-raleway);
 }
 
-@layer components {
+/* @layer components {
   .container-custom {
     @apply w-full max-w-7xl mx-auto px-4;
   }
-}
+} */

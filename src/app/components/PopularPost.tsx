@@ -1,30 +1,32 @@
-import React from 'react'
-import Button from './ui/Button'
-import { popularPost } from '../data/home-page'
-import BlogCard from './BlogCard'
-import Typography from './typography/Typography'
+import React from "react";
+import Button from "./ui/Button";
+import { popularPost } from "../data/home-page";
+import BlogCard from "./BlogCard";
+import Typography from "./typography/Typography";
 
 function PopularPost() {
   return (
-    <div className='container max-w-308 mt-24.5'>
-      <div className='continer flex justify-between'>
-        <Typography variant='h3' className='font-bold'>
+    <div className="container max-w-360 mt-24.5 px-5 md:px-18.75 lg:px-26">
+      <div className="continer flex justify-between">
+        <Typography variant="h3" className="font-bold">
           Popular Post
         </Typography>
-        <Button variant='purple' className='h-13.25 w-36.75'>
-          <Typography variant='button' color='white'>
+        <Button
+          variant="purple"
+          className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
+        >
+          <Typography variant="button" color="white">
             View All
           </Typography>
-          </Button>
+        </Button>
       </div>
-      <div className='container max-w-full mt-15.25 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-y-10'>
-        {
-          popularPost?.map((post) => <BlogCard post={post} key={post.id} />)
-        }
+      <div className="mt-15.25 grid place-items-center  md:grid-cols-3 grid-cols-1 md:gap-4 gap-y-11 ">
+        {popularPost?.map((post) => (
+          <BlogCard post={post} key={post.id} />
+        ))}
       </div>
-
     </div>
-  )
+  );
 }
 
-export default PopularPost
+export default PopularPost;

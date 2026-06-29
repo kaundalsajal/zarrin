@@ -7,7 +7,7 @@ import { companyName } from '../data/navbar-data'
 function Footer() {
 
   return (
-    <footer className='container max-w-308 mt-12.75 flex flex-col items-center'>
+    <footer className='container0 max-w-308 mx-auto mt-12.75 flex flex-col items-center'>
       <div className='flex items-center gap-4'>
         <Image alt='logo' src={companyName.logo} height={44} width={44} />
         <Typography variant='h4' className='font-extrabold'>

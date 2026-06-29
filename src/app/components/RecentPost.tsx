@@ -9,43 +9,49 @@ import Typography from './typography/Typography'
 
 function RecentPost() {
   return (
-    <div className='container max-w-308 mt-20.25'>
-      <div className='continer flex justify-between'>
-        <Typography variant='h3' className='font-bold'>
+    <div className="container max-w-360 lg:mt-20.25 px-5 md:px-18.75 lg:px-26">
+      <div className="flex justify-between items-center">
+        <Typography variant="h3" className="font-bold">
           Our Recent Post
         </Typography>
-        <Button variant='purple' className='h-13.25 w-36.75'>
-          <Typography variant='button' color='white'>
+        <Button
+          variant="purple"
+          className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
+        >
+          <Typography variant="button" color="white">
             View All
           </Typography>
         </Button>
       </div>
-      <div className='container mt-24 flex md:flex-row flex-col gap-14'>
-        <div>
-          <Image alt="Recent Post" src={recentPost.image} height={456} width={712} />
+      <div className="mt-16 lg:mt-22.5 hidden md:flex md:flex-row flex-col gap-14">
+        <div className="">
+          <Image
+            alt="Recent Post"
+            src={recentPost.image}
+            height={456}
+            width={712}
+          />
         </div>
-        <div className='container'>
-          <div className='flex gap-3'>
-            <Typography variant='overline' className='font-bold'>
+        <div>
+          <div className="flex gap-3">
+            <Typography variant="overline" className="font-bold">
               {recentPost.category}
             </Typography>
-            <Typography variant='overline' className='text-text-muted'>
+            <Typography variant="overline" className="text-text-muted">
               {recentPost.date}
             </Typography>
           </div>
-          <div className='mt-4'>
-            <Typography variant='h4' className='font-bold'>
+          <div className="mt-4">
+            <Typography variant="h4" className="font-bold">
               {recentPost.title}
             </Typography>
           </div>
           <div>
-            <Typography variant='body-sm'>
-              {recentPost.description}
-            </Typography>
+            <Typography variant="body-sm">{recentPost.description}</Typography>
           </div>
-          <div className='mt-9.5'>
-            <Button variant='purpleOutline' className='w-31.25 h-10'>
-              <Typography variant='button' color='primary'>
+          <div className="mt-9.5">
+            <Button variant="purpleOutline" className="w-31.25 h-10">
+              <Typography variant="button" color="primary">
                 {recentPost.buttonText}
               </Typography>
             </Button>
@@ -55,13 +61,13 @@ function RecentPost() {
 
       {/* Recent Post Cards */}
 
-      <div className='mt-15.75 container grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
-        {
-          recentPosts.map((post) => <BlogCard post={post} key={post.id} />)
-        }
+      <div className="mt-15.75 grid place-items-center md:grid-cols-3 grid-cols-1 gap-4">
+        {recentPosts.map((post) => (
+          <BlogCard post={post} key={post.id} />
+        ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default RecentPost
