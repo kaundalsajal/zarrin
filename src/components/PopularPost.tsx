@@ -1,6 +1,5 @@
-import React from "react";
 import Button from "./ui/Button";
-import { popularPost } from "../data/home-page";
+import { popularPost } from "../data/blog-data";
 import BlogCard from "./BlogCard";
 import Typography from "./typography/Typography";
 

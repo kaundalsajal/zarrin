@@ -1,8 +1,6 @@
-import React from "react";
-import { recentPost } from "../data/home-page";
 import Button from "./ui/Button";
 import Image from "next/image";
-import { recentPosts } from "../data/home-page";
+import { recentPosts, recentPost } from "../data/blog-data";
 import BlogCard from "./BlogCard";
 import Typography from "./typography/Typography";
 

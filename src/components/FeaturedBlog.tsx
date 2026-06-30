@@ -1,6 +1,5 @@
 import Image from "next/image";
-import React from "react";
-import { featuredBlog } from "../data/home-page";
+import { featuredBlog } from "../data/blog-data";
 import Button from "./ui/Button";
 import Typography from "./typography/Typography";
 function FeaturedBlog() {
@@ -23,7 +22,10 @@ function FeaturedBlog() {
             </Typography>
           </div>
           <div className="mt-4 lg:mt-6.25">
-            <Typography variant="h4" className="font-bold leading-8 lg:leading-11.25">
+            <Typography
+              variant="h4"
+              className="font-bold leading-8 lg:leading-11.25"
+            >
               {featuredBlog.title}
             </Typography>
           </div>

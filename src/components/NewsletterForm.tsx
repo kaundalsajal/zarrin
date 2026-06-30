@@ -1,11 +1,10 @@
-import React from "react";
-import { newsletter } from "../data/home-page";
+import { newsletter } from "../data/home-data";
 import Button from "./ui/Button";
 import Typography from "./typography/Typography";
 import Image from "next/image";
 function NewsletterForm() {
   return (
-    <div className="w-full mt-47.75 relative bg-primary flex justify-center overflow-hidden">
+    <div className="w-full mt-6.75 md:mt-28.75 lg:mt-47.75 relative bg-primary flex justify-center overflow-hidden">
       <div className="hidden md:block absolute -top-20 -left-50 z-0">
         <Image
           alt="Waves Design"

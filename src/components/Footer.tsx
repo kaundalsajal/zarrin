@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Typography from './typography/Typography'
 import { footerNavlinks, footerSocialMediaLinks, footerCopyright } from '../data/footer-data'
 import { companyName } from '../data/navbar-data'

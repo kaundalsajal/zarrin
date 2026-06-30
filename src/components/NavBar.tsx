@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import Button from './ui/Button'
 import Typography from './typography/Typography'
 import { companyName, navLinks, mobileSideMenuLogo } from '../data/navbar-data'

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { heroSection } from "../data/home-page";
+import { heroSection } from "../data/home-data";
 import Button from "./ui/Button";
 import Typography from "./typography/Typography";
 function Hero() {

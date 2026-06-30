@@ -1,6 +1,6 @@
 import AboutUsCard from "@/components/AboutUsCard";
 import Typography from "@/components/typography/Typography";
-import { aboutPage, howWeWorkSteps } from "@/data/aboutus-page";
+import { aboutPage, howWeWorkSteps } from "@/data/aboutus-data";
 import Image from "next/image";
 
 function Page() {
@@ -59,7 +59,7 @@ function Page() {
             {aboutPage.howWeWork.introduction}
           </Typography>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 md:mt-15 lg:mt-20 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 place-items-center gap-x-4 gap-y-7.5 mt-14.75 md:mt-15 lg:mt-20 ">
           {howWeWorkSteps?.map((step, index) => (
             <AboutUsCard step={step} key={index} />
           ))}

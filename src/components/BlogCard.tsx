@@ -1,5 +1,4 @@
-import React from "react";
-import { Post } from "../data/home-page";
+import { Post } from "../data/blog-data";
 import Image from "next/image";
 import Link from "next/link";
 import Typography from "./typography/Typography";
@@ -14,11 +13,7 @@ function BlogCard({ post }: { post: Post }) {
         <Typography variant="overline" className="font-bold">
           {post.category}
         </Typography>
-        <Typography
-          variant="overline"
-          color="muted"
-          className="font-medium"
-        >
+        <Typography variant="overline" color="muted" className="font-medium">
           {post.date}
         </Typography>
       </div>
@@ -39,7 +34,7 @@ function BlogCard({ post }: { post: Post }) {
             color="primary"
             className="underline font-heading font-bold"
           >
-            Read More...
+            {post.buttonText}
           </Typography>
         </Link>
       </div>
