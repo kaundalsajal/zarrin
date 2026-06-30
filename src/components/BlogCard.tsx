@@ -5,10 +5,10 @@ import Typography from "./typography/Typography";
 
 function BlogCard({ post }: { post: Blog }) {
   return (
-    <div className="max-w-100">
-      <div>
-        <Image alt="Post Image" src={post.cardImage || ""} width={400} height={360} /> {/*TODO: remove optional chaining in src */ }
-      </div>
+    <div className="max-w-190 md:max-w-100">
+
+        <Image alt="Post Image" src={post.cardImage || ""} width={400} height={360} className="w-full h-full" /> {/*TODO: remove optional chaining in src */ }
+        
       <div className="mt-10 flex gap-3">
         <Typography variant="overline" className="font-bold">
           {post?.category || "Blog Category"}

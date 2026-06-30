@@ -29,9 +29,10 @@ function NewsletterForm() {
             <div className="flex justify-center gap-2 mt-6 md:mt-12">
               <input
                 name="email"
-                className="h-9.5 w-54.5 lg:h-14 lg:w-[320px] border-none outline-0 bg-white text-text-primary px-5.75 rounded-lg"
+                className="h-9.5 w-54.5 lg:h-14 lg:w-[320px] border-0 outline-none bg-white text-foreground px-5.75 rounded-lg focus:bg-primary focus:border border-white focus:text-white"
                 placeholder="Your Email"
-                type="text"
+                type="email"
+                autoComplete="email"
               />
               <Button
                 type="submit"

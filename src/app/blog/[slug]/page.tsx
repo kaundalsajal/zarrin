@@ -10,7 +10,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const blogPost = blogs.find((blog) => blog.slug === slug);
 
   return (
-    <div className="container max-w-360 mx-auto flex flex-col items-center">
+    <div className="max-w-360 mx-auto flex flex-col items-center">
       <div className="mt-15 md:mt-18 mx-auto px-5 md:px-18.75 lg:px-26">
         <div className="mt-10 flex gap-3">
           <Typography variant="overline" className="font-bold">
@@ -56,7 +56,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
           }
         })}
       </div>
-      <PopularPost blogCount={3}/>
+      <PopularPost blogCount={3} currentPost={slug} />
     </div>
   );
 }
