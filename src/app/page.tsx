@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <FeaturedBlog />
       <RecentPost />
-      <PopularPost />
+      <PopularPost blogCount={6}/>
     </div>
   );
 }

@@ -6,33 +6,37 @@ export const blogsSection = {
 };
 
 export interface Content {
-  type:"paragraph" | "quote";
-  text:string;
+  type:"paragraph" | "quote" | "image";
+  text?:string;
   author?:string;
+  src?:string
 }
 
-export interface Post {
-  id: string;
+export interface Blog {
+  slug: string;
   category: string;
   date: string;
   title: string;
-  description: string;
-  image: string;
+  image?:string;
+  featuredImage?:string;
+  heroImage?: string;   //dimension - 
+  cardImage?: string;       //dimension - 
   content?:Array<Content>
   buttonText: string;
   isFeatured?:boolean;
+  isPopular?:boolean;
 }
 
-export const posts: Array<Post> = [
+export const blogs: Array<Blog> = [
   {
-    id: "p1",
+    slug: "p1",
     category: "DEVELOPMENT",
     date: "16 March 2023",
     title:
       "How to make a Game look more attractive with New VR & AI Technology",
-    description:
-      "Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it's publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we're committed to making AI accessible to everyone.",
-    image: "/recentpost/recent-post-image.png",
+    featuredImage:"/posts/featured-blog-image.png",
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/recent-post-1.png",
     content: [
       {
         type: "paragraph",
@@ -52,6 +56,10 @@ export const posts: Array<Post> = [
         text: "More than 3 billion people already benefit from AI-powered features in Google Workspace, whether it’s using Smart Compose in Gmail or auto-generated summaries in Google Docs. Now, we’re excited to take the next step and bring a limited set of trusted testers a new set of features that makes the process of writing even easier. In Gmail and Google Docs, you can simply type in a topic you’d like to write about, and a draft will be instantly generated for you. So if you’re a manager onboarding a new employee, Workspace saves you the time and effort involved in writing that first welcome email. From there, you can elaborate upon or abbreviate the message or adjust the tone to be more playful or professional — all in just a few clicks. We’ll be rolling out these new experiences to testers in the coming weeks.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "We’re so excited by the potential of generative AI, and the opportunities it will unlock — from helping people express themselves creatively, to helping developers build brand new types of applications, to transforming how businesses and governments engage their customers and constituents. Stay tuned for more to come in the weeks and months ahead.",
       },
@@ -60,13 +68,12 @@ export const posts: Array<Post> = [
     isFeatured: true,
   },
   {
-    id: "p2",
+    slug: "p2",
     category: "Travel",
     date: "13 March 2023",
     title: "8 Rules of Travelling In Sea You Need To Know",
-    description:
-      "Travelling in sea has many advantages. Some of the advantages of transporting goods by sea include: you can ship large volumes at costs.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/recent-post-1.png",
     content: [
       {
         type: "paragraph",
@@ -86,24 +93,25 @@ export const posts: Array<Post> = [
         text: "Weather conditions at sea can change much faster than on land, making it important to stay informed throughout the journey. Listening to announcements from the crew, following navigation updates, and respecting safety restrictions help ensure a smooth experience. Travelers should also take precautions against seasickness by staying hydrated, getting enough fresh air, and carrying recommended medication if needed.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Responsible travel is equally important when exploring oceans and coastal destinations. Avoid throwing waste into the sea, respect marine wildlife, and support operators who follow sustainable tourism practices. By combining careful preparation with environmental awareness, travelers can enjoy memorable sea adventures while helping preserve the beauty and health of the world's oceans for future generations.",
       },
     ],
-
-    image: "/posts/recent-post-1.png",
     buttonText: "Read More",
     isFeatured: false,
   },
 
   {
-    id: "p3",
+    slug: "p3",
     category: "DEVELOPMENT",
     date: "11 March 2023",
     title: "How to build strong portfolio and get a Job in UI/UX",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/recent-post-2.png",
     content: [
       {
         type: "paragraph",
@@ -123,24 +131,25 @@ export const posts: Array<Post> = [
         text: "Besides building a portfolio, improving your professional presence is equally important. Create a polished LinkedIn profile, publish your work on platforms such as Behance or Dribbble, and contribute to design communities where you can receive constructive feedback. Networking with other designers and participating in design challenges can help you gain visibility and discover job opportunities that may not be publicly advertised.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Finally, tailor both your portfolio and resume for every job application. Highlight projects that closely match the company's industry or product, and be prepared to confidently explain your design decisions during interviews. Employers appreciate candidates who can communicate their thought process, collaborate effectively with developers and stakeholders, and continuously learn new tools and design methodologies.",
       },
     ],
-
-    image: "/posts/recent-post-2.png",
     buttonText: "Read More",
     isFeatured: false,
   },
 
   {
-    id: "p4",
+    slug: "p4",
     category: "Sports",
     date: "10 March 2023",
     title: "How to Be a Professional Footballer in 2023",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/recent-post-3.png",
     content: [
       {
         type: "paragraph",
@@ -160,24 +169,25 @@ export const posts: Array<Post> = [
         text: "Maintaining a healthy lifestyle is equally important for aspiring footballers. A balanced diet, proper hydration, sufficient sleep, and adequate recovery allow athletes to perform consistently throughout demanding training sessions and competitive seasons. Preventing injuries through warm-ups, stretching, and recovery exercises is just as important as improving technical skills, since long-term fitness is essential for career development.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "In today's football industry, building a professional mindset can set players apart from the competition. Attend trials, participate in tournaments, create highlight videos, and remain open to feedback from coaches and teammates. Every training session and every match is an opportunity to learn something new. With dedication, resilience, and continuous improvement, aspiring footballers can move one step closer to achieving their dream of playing at the professional level.",
       },
     ],
-
-    image: "/posts/recent-post-3.png",
     buttonText: "Read More",
     isFeatured: false,
   },
 
   {
-    id: "p5",
+    slug: "p5",
     category: "Travel",
     date: "13 March 2023",
     title: "Train Or Bus Journey? Which one suits?",
-    description:
-      "The choice between a train or bus journey depends on various factors such as the distance of the journey, the time available and the cost.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-1.png",
     content: [
       {
         type: "paragraph",
@@ -197,24 +207,26 @@ export const posts: Array<Post> = [
         text: "Travel time is another important consideration. High-speed trains can significantly reduce travel duration between major cities, while buses may take longer due to road traffic and multiple stops. However, buses often operate more frequently and provide direct connections to smaller towns, eliminating the need for additional transportation after reaching your destination.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Ultimately, the best choice depends on your personal preferences and the purpose of your trip. If comfort, speed, and convenience are your priorities, a train journey may be the better option. If affordability, route availability, and flexibility are more important, traveling by bus can be an excellent alternative. Evaluating both options before booking ensures a more enjoyable and stress-free travel experience.",
       },
     ],
-
-    image: "/posts/popular-post-1.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true,
   },
 
   {
-    id: "p6",
+    slug: "p6",
     category: "DEVELOPMENT",
     date: "11 March 2023",
     title: "Best Website to research for your next project",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-2.png",
     content: [
       {
         type: "paragraph",
@@ -234,24 +246,26 @@ export const posts: Array<Post> = [
         text: "When evaluating online resources, always consider their credibility and how recently the information was updated. Technology evolves rapidly, and outdated tutorials or documentation may no longer reflect current best practices. Comparing information from multiple trusted sources helps verify accuracy and provides a broader understanding of different approaches to solving the same problem.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "The most effective developers continuously research throughout the entire project lifecycle rather than only during the planning stage. Staying curious, experimenting with new tools, and learning from industry experts enables you to build better products and adapt to changing technologies. Investing time in quality research ultimately leads to more efficient development, improved user experiences, and stronger long-term project success.",
       },
     ],
-
-    image: "/posts/popular-post-2.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true
   },
 
   {
-    id: "p7",
+    slug: "p7",
     category: "Sports",
     date: "10 March 2023",
     title: "How to Be a Dancer in 2023 with proper skills?",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-3.png",
     content: [
       {
         type: "paragraph",
@@ -271,24 +285,26 @@ export const posts: Array<Post> = [
         text: "Physical fitness plays an important role in every dancer's journey. A balanced diet, proper hydration, adequate sleep, and regular recovery sessions help maintain energy levels and improve overall performance. Stretching before and after practice, along with strength and endurance exercises, prepares the body for demanding choreography and helps prevent common dance-related injuries.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Today's dancers can also benefit from sharing their work online through social media and video platforms. Building a professional portfolio, participating in competitions, and collaborating with other performers creates valuable opportunities for growth and recognition. By combining technical training with creativity, discipline, and confidence, aspiring dancers can develop the skills needed to succeed in the modern dance industry.",
       },
     ],
-
-    image: "/posts/popular-post-3.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true
   },
 
   {
-    id: "p8",
+    slug: "p8",
     category: "Travel",
     date: "13 March 2023",
     title: "Who is the best singer on chart? Know him?",
-    description:
-      "Chart by Billboard which ranks the all-time greatest artists based on their performance on the weekly Billboard Hot 100.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-4.png",
     content: [
       {
         type: "paragraph",
@@ -308,23 +324,26 @@ export const posts: Array<Post> = [
         text: "With the rise of digital streaming platforms, the music industry has evolved significantly. Fans can now discover artists from different countries, genres, and cultures with just a few clicks. Streaming services, social media, and video platforms have created opportunities for talented musicians to build global audiences without relying solely on traditional record labels, making the competition for chart positions more exciting than ever.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Although charts provide valuable insights into an artist's commercial success, personal preference remains the most important factor in choosing a favorite singer. Every listener connects with music differently, and each artist brings a unique voice, style, and message to their audience. Exploring a variety of genres and performers allows music lovers to appreciate the diversity and creativity that make the industry so inspiring.",
       },
     ],
-
-    image: "/posts/popular-post-4.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true
   },
 
   {
-    id: "p9",
+    slug: "p9",
     category: "DEVELOPMENT",
     date: "11 March 2023",
     title: "How to start export import business from home?",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-5.png",
 
     content: [
       {
@@ -345,24 +364,26 @@ export const posts: Array<Post> = [
         text: "Building strong relationships with both suppliers and customers is essential for long-term growth. Clear communication, transparent pricing, and timely deliveries help establish trust and encourage repeat business. Using digital marketing, professional websites, and online marketplaces can also expand your reach, allowing you to attract customers from different countries while building a recognizable brand in the global marketplace.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "As your business grows, continue analyzing market trends and customer preferences to identify new opportunities. Diversifying your product range, improving operational efficiency, and investing in technology can help you stay competitive in the fast-changing world of international trade. With careful planning, consistent learning, and a customer-focused approach, a home-based export-import business can develop into a successful and sustainable enterprise.",
       },
     ],
-
-    image: "/posts/popular-post-5.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true
   },
 
   {
-    id: "p10",
+    slug: "p10",
     category: "Sports",
     date: "10 March 2023",
     title: "Make some drinks with chocolates and milk",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/posts/popular-post-6.png",
     content: [
       {
         type: "paragraph",
@@ -382,149 +403,17 @@ export const posts: Array<Post> = [
         text: "Presentation also plays an important role in making homemade drinks more enjoyable. Top your beverage with whipped cream, chocolate shavings, marshmallows, or cocoa powder for an attractive finish. For chilled drinks, blend the chocolate mixture with ice cubes to create a rich and creamy chocolate frappe that is perfect for warm afternoons or special gatherings with friends and family.",
       },
       {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
         type: "paragraph",
         text: "Preparing chocolate drinks at home allows you to control the sweetness and customize each recipe according to your preferences. Trying different combinations of flavors and toppings is a fun way to discover new favorites while sharing memorable moments with loved ones. With a little creativity and a few simple ingredients, you can create delicious beverages that rival those served in your favorite cafés.",
       },
     ],
-
-    image: "/posts/popular-post-6.png",
     buttonText: "Read More",
     isFeatured: false,
+    isPopular:true
   },
 ];
-
-export const featuredBlog = {
-  category: "DEVELOPMENT",
-  date: "16 March 2023",
-  title: "How to make a Game look more attractive with New VR & AI Technology",
-  description:
-    "Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it's publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we're committed to making AI accessible to everyone.",
-  buttonText: "Read More",
-  image: "/featuredblog/featured-blog-image.png",
-};
-
-
-export const recentPost: Post = {
-  id: "rp1",
-  category: "DEVELOPMENT",
-  date: "16 March 2023",
-  title: "How to make a Game look more attractive with New VR & AI Technology",
-  description:
-    "Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it's publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we're committed to making AI accessible to everyone.",
-  image: "/recentpost/recent-post-image.png",
-  buttonText: "Read More",
-};
-
-export const recentPosts: Array<Post> = [
-  {
-    id: "p2",
-    category: "Travel",
-    date: "13 March 2023",
-    title: "8 Rules of Travelling In Sea You Need To Know",
-    description:
-      "Travelling in sea has many advantages. Some of the advantages of transporting goods by sea include.",
-    image: "/posts/recent-post-1.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p3",
-    category: "DEVELOPMENT",
-    date: "11 March 2023",
-    title: "How to build strong portfolio and get a Job in UI/UX",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
-    image: "/posts/recent-post-2.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p4",
-    category: "Sports",
-    date: "10 March 2023",
-    title: "How to Be a Professional Footballer in 2023",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-    image: "/posts/recent-post-3.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-];
-
-export const popularPost: Array<Post> = [
-  {
-    id: "p5",
-    category: "Travel",
-    date: "13 March 2023",
-    title: "Train Or Bus Journey? Which one suits?",
-    description:
-      "The choice between a train or bus journey depends on various factors such as the distance of the journey.",
-    image: "/posts/popular-post-1.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p6",
-    category: "DEVELOPMENT",
-    date: "11 March 2023",
-    title: "Best Website to research for your next project",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
-    image: "/posts/popular-post-2.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p7",
-    category: "Sports",
-    date: "10 March 2023",
-    title: "How to Be a Dancer in 2023 with proper skills?",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-    image: "/posts/popular-post-3.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p8",
-    category: "Travel",
-    date: "13 March 2023",
-    title: "Who is the best singer on chart? Know him?",
-    description:
-      "Chart by Billboard which ranks the all-time greatest artists based on their performance on the Billboard.",
-    image: "/posts/popular-post-4.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p9",
-    category: "DEVELOPMENT",
-    date: "11 March 2023",
-    title: "How to start export import business from home?",
-    description:
-      "Capitalize on low hanging fruit to identify a ballpark value added activity to beta test.",
-    image: "/posts/popular-post-5.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-
-  {
-    id: "p10",
-    category: "Sports",
-    date: "10 March 2023",
-    title: "Make some drinks with chocolates and milk",
-    description:
-      "Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-    image: "/posts/popular-post-6.png",
-    buttonText: "Read More",
-    isFeatured: false,
-  },
-];
-
 

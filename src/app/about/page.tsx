@@ -6,7 +6,8 @@ import Image from "next/image";
 function Page() {
   return (
     <div className="container px-6 md:px-18 items-center lg:px-26 mx-auto">
-      {/* <p className="text-primary">Primary</p>
+      {/* TODO: remove me 
+      <p className="text-primary">Primary</p>
       <p className="text-secondary">Secondary</p>
       <p className="text-muted">Muted</p>
       <p className="text-foreground">foreground</p>
