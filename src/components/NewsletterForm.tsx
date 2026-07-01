@@ -2,6 +2,7 @@ import { newsletter } from "../data/home-data";
 import Button from "./ui/Button";
 import Typography from "./typography/Typography";
 import Image from "next/image";
+import { newsletterFormButtonText } from "@/data/pagesdata-data";
 function NewsletterForm() {
   return (
     <div className="w-full mt-6.75 md:mt-28.75 lg:mt-47.75 relative bg-primary flex justify-center overflow-hidden">
@@ -26,10 +27,10 @@ function NewsletterForm() {
             </Typography>
           </div>
           <form>
-            <div className="flex justify-center gap-2 mt-6 md:mt-12">
+            <div className="flex items-center justify-center flex-col xs:flex-row gap-2 mt-6 md:mt-12">
               <input
                 name="email"
-                className="h-9.5 w-54.5 lg:h-14 lg:w-[320px] border-0 outline-none bg-white text-foreground px-5.75 rounded-lg focus:bg-primary focus:border border-white focus:text-white"
+                className="h-9.5 w-50 xs:w-54.5 lg:h-14 lg:w-[320px] border-0 outline-none bg-white text-foreground px-5.75 rounded-lg focus:bg-primary focus:border border-white focus:text-white"
                 placeholder="Your Email"
                 type="email"
                 autoComplete="email"
@@ -40,7 +41,7 @@ function NewsletterForm() {
                 className="w-27.5 h-9.5 lg:h-14 lg:w-41.5"
               >
                 <Typography variant="button" color="white">
-                  Get Started
+                  {newsletterFormButtonText}
                 </Typography>
               </Button>
             </div>

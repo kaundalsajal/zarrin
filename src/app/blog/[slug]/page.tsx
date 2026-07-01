@@ -11,8 +11,8 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
   return (
     <div className="max-w-360 mx-auto flex flex-col items-center">
-      <div className="mt-15 md:mt-18 mx-auto px-5 md:px-18.75 lg:px-26">
-        <div className="mt-10 flex gap-3">
+      <div className="mt-3 md:mt-18 mx-auto px-5 md:px-18.75 lg:px-26">
+        <div className="max-w-5xl  mt-10 flex gap-3">
           <Typography variant="overline" className="font-bold">
             {blogPost?.category || "Blog Category"}
           </Typography>
@@ -20,8 +20,8 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
             {blogPost?.date || "Blog Date"}
           </Typography>
         </div>
-        <div className="mt-4">
-          <Typography variant="h3" className="font-bold line-clamp-2">
+        <div className="max-w-5xl mt-4">
+          <Typography variant="h3" className="font-bold">
             {blogPost?.title || "Blog Title"}
           </Typography>
         </div>

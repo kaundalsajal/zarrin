@@ -27,8 +27,8 @@ function Page() {
           {blogsSection.description}
         </Typography>
       </div>
-      <div className="mt-15.75 grid place-items-center md:grid-cols-3 grid-cols-1 gap-4">
-        {blogs.map((blog,index) => (
+      <div className="mt-15.75 grid place-items-center md:grid-cols-3 tablet-sm:grid-cols-2 grid-cols-1 gap-4 gap-y-10">
+        {blogs.map((blog, index) => (
           <BlogCard post={blog} key={index} />
         ))}
       </div>

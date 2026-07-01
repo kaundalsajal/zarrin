@@ -10,7 +10,8 @@ type TypographyVariant =
   | "body-sm"
   | "caption"
   | "button"
-  | "overline";
+  | "overline"
+  | "blog-paragraph";
 
 function Typography({
   variant,
@@ -38,6 +39,7 @@ function Typography({
     button:
       "font-body text-[10px]  lg:text-[14px] font-medium font-weight-bold",
     overline: "font-body text-[8px] lg:text-[12px]",
+    "blog-paragraph": "font-heading text-[13px] lg:text-[16px]",
   };
 
   if (variant === "button") {

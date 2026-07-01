@@ -8,7 +8,10 @@
   --color-muted: #999999;
 
   --color-white: #ffffff;
-  
+
+  --breakpoint-xs: 22rem;
+  --breakpoint-tablet-sm: 27rem;
+
   --font-body: var(--font-roboto);
   --font-heading: var(--font-raleway);
 }

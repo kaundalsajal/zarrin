@@ -14,7 +14,7 @@ function Hero() {
           loading="eager"
         />
       </div>
-      <div className="container py-10.25 md:py-22 lg:py-30.5 px-6 md:px-18.5 lg:px-26 flex justify-center md:flex-row flex-col gap-11.5">
+      <div className="py-10.25 md:py-22 lg:py-30.5 px-6 md:px-18.5 lg:px-26 flex justify-center md:flex-row flex-col gap-11.5">
         <div className="max-w-145">
           <div>
             <Typography variant="body-sm" color="white">
@@ -26,7 +26,7 @@ function Hero() {
               {heroSection.title}
             </Typography>
           </div>
-          <div className="contianer mt-4.75 lg:mt-7 max-w-104">
+          <div className="mt-4.75 lg:mt-7 max-w-104">
             <Typography
               variant="body-sm"
               color="white"

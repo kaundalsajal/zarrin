@@ -3,6 +3,8 @@ import Image from "next/image";
 import { blogs } from "../data/blog-data";
 import BlogCard from "./BlogCard";
 import Typography from "./typography/Typography";
+import Link from "next/link";
+import { recentPostPageButtonText, recentPostPageTitle } from "@/data/pagesdata-data";
 
 function RecentBlog() {
 
@@ -12,14 +14,14 @@ function RecentBlog() {
     <div className="container max-w-360 lg:mt-20.25 px-5 md:px-18.75 lg:px-26">
       <div className="flex justify-between items-center">
         <Typography variant="h3" className="font-bold">
-          Our Recent Post
+          {recentPostPageTitle}
         </Typography>
         <Button
           variant="purple"
           className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
         >
           <Typography variant="button" color="white">
-            View All
+            {recentPostPageButtonText}
           </Typography>
         </Button>
       </div>
@@ -47,22 +49,26 @@ function RecentBlog() {
             </Typography>
           </div>
           <div className="mt-3">
-            <Typography variant="body-sm" className="line-clamp-5">{featuredPost?.content?.[0].text}</Typography>
+            <Typography variant="body-sm" className="line-clamp-5">
+              {featuredPost?.content?.[0].text}
+            </Typography>
           </div>
           <div className="mt-6 lg:mt-9.5">
+            <Link href={`/blog/${featuredPost?.slug}`}>
             <Button variant="purpleOutline" className="w-31.25 h-10">
               <Typography variant="button" color="primary">
                 {featuredPost?.buttonText}
               </Typography>
             </Button>
+            </Link>
           </div>
         </div>
       </div>
 
       {/* Recent Post Cards */}
 
-      <div className="mt-15.75 grid place-items-center md:grid-cols-3 grid-cols-1 gap-4">
-        {recentBlogs.map((post,index) => (
+      <div className="mt-15.75 grid place-items-center md:grid-cols-3 tablet-sm:grid-cols-2 grid-cols-1 gap-4 gap-y-10">
+        {recentBlogs.map((post, index) => (
           <BlogCard post={post} key={index} />
         ))}
       </div>

@@ -16,7 +16,7 @@ function Button({ variant, className = "", children, ...props }: ButtonProps) {
   };
   return (
     <button
-      className={`${baseStyle} ${variants[variant]} ${className} flex justify-center items-center cursor-pointer 
+      className={`${baseStyle} ${variants[variant]} ${className} flex justify-center items-center cursor-pointer transition-all
       ${clsx(
         variant === "purple"
           ? "hover:bg-white hover:border hover:text-primary"

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { blogs} from "../data/blog-data";
 import Button from "./ui/Button";
 import Typography from "./typography/Typography";
+import Link from "next/link";
 function FeaturedBlog() {
   const featuredBlog = blogs.find((blog)=>blog.isFeatured)
   return (
@@ -36,11 +37,13 @@ function FeaturedBlog() {
             </Typography>
           </div>
           <div className="mt-5 lg:mt-12">
+            <Link href={`/blog/${featuredBlog?.slug}`}>
             <Button variant="purpleOutline" className="h-10 w-31.25">
               <Typography variant="button" color="primary">
                 {featuredBlog?.buttonText}
               </Typography>
             </Button>
+            </Link>
           </div>
         </div>
       </div>
