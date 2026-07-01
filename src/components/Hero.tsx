@@ -15,7 +15,7 @@ function Hero() {
         />
       </div>
       <div className="py-10.25 md:py-22 lg:py-30.5 px-6 md:px-18.5 lg:px-26 flex justify-center md:flex-row flex-col gap-11.5">
-        <div className="max-w-145">
+        <div className="max-w-145 animate-slide-in-left">
           <div>
             <Typography variant="body-sm" color="white">
               {heroSection.badge}
@@ -52,6 +52,7 @@ function Hero() {
             src={heroSection.image}
             height={576}
             width={608}
+            className="animate-image"
           />
         </div>
       </div>

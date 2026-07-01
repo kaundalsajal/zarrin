@@ -12,7 +12,7 @@ function BlogCard({ post }: { post: Blog }) {
           src={post.cardImage || ""}
           width={400}
           height={360}
-          className="w-full h-full"
+          className="w-full h-full animate-image"
         />{" "}
         {/*TODO: remove optional chaining in src */}
         <div className="mt-10 flex gap-3">

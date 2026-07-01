@@ -39,7 +39,7 @@ function Page() {
         src={aboutPage.hero.image}
         height={608}
         width={1232}
-        className="rounded-2xl mt-15 md:mt-21.75 lg:mt-30.75"
+        className="rounded-2xl mt-15 md:mt-21.75 lg:mt-30.75 animate-image"
       />
       <div className="mt-15 md:mt-18">
         <Typography variant="body-sm" color="secondary" className="font-bold">
