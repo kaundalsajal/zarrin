@@ -5,7 +5,7 @@ import Typography from "./typography/Typography";
 
 function BlogCard({ post }: { post: Blog }) {
   return (
-    <div className="max-w-190 md:max-w-100 relative hover:scale-103 transition-all">
+    <div className="max-w-190 md:max-w-100 relative hover:scale-103 transition-all duration-400">
       <Link href={`/blog/${post.slug}`}>
         <Image
           alt="Post Image"
