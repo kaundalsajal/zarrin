@@ -23,7 +23,7 @@ export interface Blog {
   cardImage?: string;       //dimension - 
   content?:Array<Content>
   buttonText: string;
-  isFeatured?:boolean;
+  isFeatured:boolean;
   isPopular?:boolean;
 }
 

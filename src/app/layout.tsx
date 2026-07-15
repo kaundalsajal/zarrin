@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import {Roboto, Raleway } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/footer";
-import NavBar from "@/components/nav-bar";
-import NewsletterForm from "@/components/newsletter-form";
-
 
 
 const roboto = Roboto({
@@ -34,11 +30,8 @@ export default function RootLayout({
       lang="en"
       className={`${roboto.variable} ${raleway.variable} h-full antialiased`}
     >
-      <body className="min-h-full m- bg-[#FAFAFA]">
-        <NavBar />
+      <body className="min-h-full bg-[#FAFAFA]">
         {children}
-        <NewsletterForm />
-        <Footer />
       </body>
     </html>
   );

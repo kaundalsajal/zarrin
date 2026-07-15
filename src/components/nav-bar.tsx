@@ -54,7 +54,7 @@ function NavBar() {
           }
           <Image
             alt="Search Icon"
-            src="/navbar/search-minus.png"
+            src="/nav-bar/search-minus.png"
             height={22}
             width={22}
           />

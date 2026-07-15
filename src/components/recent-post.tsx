@@ -11,6 +11,7 @@ import {
 
 function RecentBlog() {
   const recentBlogs = blogs
+    .filter((post) => !post.isFeatured)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(1, 4);
   const featuredPost = blogs.find((blog) => blog.isFeatured);
