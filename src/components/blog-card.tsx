@@ -5,14 +5,14 @@ import Typography from "./typography/typography";
 
 function BlogCard({ post }: { post: Blog }) {
   return (
-    <div className="max-w-190 md:max-w-100 relative hover:scale-103 transition-all duration-400 bg-amber-200">
+    <div className="max-w-190 md:max-w-100 relative flex flex-col justify-between hover:scale-103 transition-all duration-400">
       <Link href={`/blog/${post.slug}`}>
         <Image
           alt="Post Image"
           src={post.cardImage || ""}
           width={400}
           height={360}
-          className="w-full h-full animate-image"
+          className="animate-image"
         />{" "}
         {/*TODO: remove optional chaining in src */}
         <div className="mt-10 flex gap-3">
