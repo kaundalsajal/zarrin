@@ -1,7 +1,7 @@
 import { blogs } from "@/data/blog-data";
-import Typography from "@/components/typography/ty";
+import Typography from "@/components/typography/typography";
 import BlogParagraph from "@/components/blog-paragraph";
-import BlogQuote from "@/components/BlogQuote";
+import BlogQuote from "@/components/blog-quote";
 import Image from "next/image";
 import PopularPost from "@/components/popular-post";
 

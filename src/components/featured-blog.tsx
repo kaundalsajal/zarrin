@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { blogs } from "../data/blog-data";
-import Button from "./ui/butto";
-import Typography from "./typography/typograph";
+import Button from "./ui/button";
+import Typography from "./typography/typography";
 import Link from "next/link";
 function FeaturedBlog() {
   const featuredBlog = blogs.find((blog) => blog.isFeatured);

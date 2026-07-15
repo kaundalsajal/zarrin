@@ -1,4 +1,4 @@
-import Hero from "@/components/ero";
+import Hero from "@/components/hero";
 import FeaturedBlog from "@/components/featured-blog";
 import PopularPost from "@/components/popular-post";
 import RecentPost from "@/components/recent-post";

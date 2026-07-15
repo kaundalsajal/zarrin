@@ -1,6 +1,6 @@
 import { newsletter } from "../data/home-data";
-import Button from "./ui/butto";
-import Typography from "./typography/typograph";
+import Button from "./ui/button";
+import Typography from "./typography/typography";
 import Image from "next/image";
 import { newsletterFormButtonText } from "@/data/pages-data";
 function NewsletterForm() {

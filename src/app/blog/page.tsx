@@ -1,4 +1,4 @@
-import Typography from "@/components/typography/typograph";
+import Typography from "@/components/typography/typography";
 import { blogs, blogsSection } from "@/data/blog-data";
 import BlogCard from "@/components/blog-card";
 

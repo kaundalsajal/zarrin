@@ -1,5 +1,5 @@
 import AboutUsCard from "@/components/about-us-card";
-import Typography from "@/components/typography/ty";
+import Typography from "@/components/typography/typography";
 import { aboutPage, howWeWorkSteps } from "@/data/about-us-data";
 import Image from "next/image";
 

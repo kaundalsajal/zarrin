@@ -1,5 +1,5 @@
 import { Content } from "@/data/blog-data";
-import Typography from "./typography/typograph";
+import Typography from "./typography/typography";
 
 function BlogQuote({ content }: { content: Content }) {
   return (

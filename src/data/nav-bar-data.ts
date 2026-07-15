@@ -10,10 +10,10 @@ interface NavLinks {
 
 export const companyName = {
   name: "Zarrin",
-  logo: "/navbar/logo.png",
+  logo: "/nav-bar/logo.png",
 };
 
-export const mobileSideMenuLogo = "/navbar/menu.png"
+export const mobileSideMenuLogo = "/nav-bar/menu.png"
 
 export const navLinks:NavLinks = {
   links: [
