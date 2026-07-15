@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Typography from "@/components/typography/Typography";
-import Button from "@/components/ui/Button";
+import Typography from "@/components/typography/ty";
+import Button from "@/components/ui/Butto";
 
 function Page() {
   return (

@@ -1,7 +1,7 @@
-import Hero from "@/components/Hero";
-import FeaturedBlog from "@/components/FeaturedBlog";
-import PopularPost from "@/components/PopularPost";
-import RecentPost from "@/components/RecentPost";
+import Hero from "@/components/ero";
+import FeaturedBlog from "@/components/featured-blog";
+import PopularPost from "@/components/popular-post";
+import RecentPost from "@/components/recent-post";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <FeaturedBlog />
       <RecentPost />
-      <PopularPost blogCount={6}/>
+      <PopularPost blogCount={6} />
     </div>
   );
 }

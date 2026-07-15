@@ -1,6 +1,6 @@
-import AboutUsCard from "@/components/AboutUsCard";
-import Typography from "@/components/typography/Typography";
-import { aboutPage, howWeWorkSteps } from "@/data/aboutus-data";
+import AboutUsCard from "@/components/about-us-card";
+import Typography from "@/components/typography/ty";
+import { aboutPage, howWeWorkSteps } from "@/data/about-us-data";
 import Image from "next/image";
 
 function Page() {

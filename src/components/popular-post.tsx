@@ -1,8 +1,11 @@
-import Button from "./ui/Button";
-import BlogCard from "./BlogCard";
-import Typography from "./typography/Typography";
+import Button from "./ui/button";
+import BlogCard from "./blog-card";
+import Typography from "./typography/typography";
 import { blogs } from "@/data/blog-data";
-import { popularPostPageButtonText, popularPostPageTitle } from "@/data/pagesdata-data";
+import {
+  popularPostPageButtonText,
+  popularPostPageTitle,
+} from "@/data/pages-data";
 
 function PopularPost({
   blogCount,

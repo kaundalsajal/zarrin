@@ -1,6 +1,6 @@
-import Typography from "@/components/typography/Typography";
-import { blogs, blogsSection} from "@/data/blog-data";
-import BlogCard from "@/components/BlogCard";
+import Typography from "@/components/typography/ty";
+import { blogs, blogsSection } from "@/data/blog-data";
+import BlogCard from "@/components/blog-card";
 
 function Page() {
   return (

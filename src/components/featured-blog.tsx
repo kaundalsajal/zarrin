@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { blogs} from "../data/blog-data";
-import Button from "./ui/Button";
-import Typography from "./typography/Typography";
+import { blogs } from "../data/blog-data";
+import Button from "./ui/button";
+import Typography from "./typography/typography";
 import Link from "next/link";
 function FeaturedBlog() {
-  const featuredBlog = blogs.find((blog)=>blog.isFeatured)
+  const featuredBlog = blogs.find((blog) => blog.isFeatured);
   return (
     <div className="container flex justify-center max-w-360 my-10.5 md:my-23.5 lg:my-32.75 px-6 md:px-18.5 lg:px-26 ">
       <div className=" max-w-360 flex flex-col p-4.5 md:p-0 md:border-0 border border-gray-300 rounded-[11px] md:rounded-0 md:relative md:pb-32">
@@ -38,11 +38,11 @@ function FeaturedBlog() {
           </div>
           <div className="mt-5 lg:mt-12">
             <Link href={`/blog/${featuredBlog?.slug}`}>
-            <Button variant="purpleOutline" className="h-10 w-31.25">
-              <Typography variant="button" color="primary">
-                {featuredBlog?.buttonText}
-              </Typography>
-            </Button>
+              <Button variant="purpleOutline" className="h-10 w-31.25">
+                <Typography variant="button" color="primary">
+                  {featuredBlog?.buttonText}
+                </Typography>
+              </Button>
             </Link>
           </div>
         </div>

@@ -29,12 +29,50 @@ export interface Blog {
 
 export const blogs: Array<Blog> = [
   {
+    slug: "p0",
+    category: "ARTIFICIAL INTELLIGENCE",
+    date: "16 March 2023",
+    title: "How AI Will Change the Future",
+    featuredImage: "/posts/featured-blog-image.png",
+    heroImage: "/posts/recent-post-image.png",
+    cardImage: "/hero/hero.png",
+    content: [
+      {
+        type: "paragraph",
+        text: "Artificial Intelligence is rapidly transforming the way we live, work, and interact with technology. From virtual assistants and recommendation systems to autonomous vehicles and medical diagnostics, AI is becoming an integral part of our everyday lives. As the technology continues to evolve, its impact will extend far beyond automation, enabling smarter decision-making, increased productivity, and entirely new ways of solving complex problems.",
+      },
+      {
+        type: "paragraph",
+        text: "In the coming years, AI is expected to reshape industries such as healthcare, education, finance, manufacturing, and entertainment. Doctors will be able to diagnose diseases with greater accuracy, teachers will create personalized learning experiences for every student, and businesses will make faster, data-driven decisions. Rather than replacing humans, AI has the potential to become a powerful tool that enhances creativity, improves efficiency, and allows people to focus on more meaningful work.",
+      },
+      {
+        type: "quote",
+        text: "Artificial intelligence is the new electricity.",
+        author: "Andrew Ng",
+      },
+      {
+        type: "paragraph",
+        text: "Despite its incredible potential, AI also presents important challenges. Concerns around privacy, bias, misinformation, and job displacement require governments, businesses, and developers to establish ethical guidelines for building and deploying AI systems. Responsible development, transparency, and human oversight will play a crucial role in ensuring that AI benefits society as a whole.",
+      },
+      {
+        type: "image",
+        src: "/posts/content-image.png",
+      },
+      {
+        type: "paragraph",
+        text: "The future of AI is not just about creating smarter machines—it's about empowering people. As AI becomes more accessible, individuals and organizations will have new opportunities to innovate, solve global challenges, and improve quality of life. Those who embrace AI, learn its capabilities, and use it responsibly will be better prepared for the technological future that lies ahead.",
+      },
+    ],
+    buttonText: "Read More",
+    isFeatured: true,
+  },
+  {
     slug: "p1",
     category: "DEVELOPMENT",
     date: "16 March 2023",
     title:
       "How to make a Game look more attractive with New VR & AI Technology",
-    featuredImage:"/posts/featured-blog-image.png",
+    featuredImage: "/posts/featured-blog-image.png",
     heroImage: "/posts/recent-post-image.png",
     cardImage: "/posts/recent-post-1.png",
     content: [
@@ -217,7 +255,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true,
+    isPopular: true,
   },
 
   {
@@ -256,7 +294,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true
+    isPopular: true,
   },
 
   {
@@ -295,7 +333,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true
+    isPopular: true,
   },
 
   {
@@ -334,7 +372,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true
+    isPopular: true,
   },
 
   {
@@ -374,7 +412,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true
+    isPopular: true,
   },
 
   {
@@ -413,7 +451,7 @@ export const blogs: Array<Blog> = [
     ],
     buttonText: "Read More",
     isFeatured: false,
-    isPopular:true
+    isPopular: true,
   },
 ];
 

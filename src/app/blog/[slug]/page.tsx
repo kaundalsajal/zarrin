@@ -1,9 +1,9 @@
-import { blogs} from "@/data/blog-data";
-import Typography from "@/components/typography/Typography";
-import BlogParagraph from "@/components/BlogParagraph";
+import { blogs } from "@/data/blog-data";
+import Typography from "@/components/typography/ty";
+import BlogParagraph from "@/components/blog-paragraph";
 import BlogQuote from "@/components/BlogQuote";
 import Image from "next/image";
-import PopularPost from "@/components/PopularPost";
+import PopularPost from "@/components/popular-post";
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

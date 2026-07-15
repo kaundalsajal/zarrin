@@ -1,15 +1,19 @@
-import Button from "./ui/Button";
+import Button from "./ui/button";
 import Image from "next/image";
 import { blogs } from "../data/blog-data";
-import BlogCard from "./BlogCard";
-import Typography from "./typography/Typography";
+import BlogCard from "./blog-card";
+import Typography from "./typography/typography";
 import Link from "next/link";
-import { recentPostPageButtonText, recentPostPageTitle } from "@/data/pagesdata-data";
+import {
+  recentPostPageButtonText,
+  recentPostPageTitle,
+} from "@/data/pages-data";
 
 function RecentBlog() {
-
-  const recentBlogs = blogs.sort((a,b)=>new Date(b.date).getTime() - new Date(a.date).getTime()).slice(1,4)
-  const featuredPost = blogs.find((blog)=>blog.isFeatured)
+  const recentBlogs = blogs
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(1, 4);
+  const featuredPost = blogs.find((blog) => blog.isFeatured);
   return (
     <div className="container max-w-360 lg:mt-20.25 px-5 md:px-18.75 lg:px-26">
       <div className="flex justify-between items-center">
@@ -55,11 +59,11 @@ function RecentBlog() {
           </div>
           <div className="mt-6 lg:mt-9.5">
             <Link href={`/blog/${featuredPost?.slug}`}>
-            <Button variant="purpleOutline" className="w-31.25 h-10">
-              <Typography variant="button" color="primary">
-                {featuredPost?.buttonText}
-              </Typography>
-            </Button>
+              <Button variant="purpleOutline" className="w-31.25 h-10">
+                <Typography variant="button" color="primary">
+                  {featuredPost?.buttonText}
+                </Typography>
+              </Button>
             </Link>
           </div>
         </div>
