@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import {Roboto, Raleway } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/ooter";
-import NavBar from "@/components/navbar";
+import NavBar from "@/components/nav-bar";
 import NewsletterForm from "@/components/newsletter-form";
 
 

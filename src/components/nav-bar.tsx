@@ -2,9 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Button from "./ui/button";
-import Typography from "./typography/typography";
-import { companyName, navLinks, mobileSideMenuLogo } from "../data/navbar-data";
+import Button from "./ui/butto";
+import Typography from "./typography/typograph";
+import {
+  companyName,
+  navLinks,
+  mobileSideMenuLogo,
+} from "../data/nav-bar-data";
 import { useState } from "react";
 import clsx from "clsx";
 function NavBar() {

@@ -1,5 +1,5 @@
 import { step } from "@/data/about-us-data";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 
 function AboutUsCard({ step }: { step: step }) {
   return (

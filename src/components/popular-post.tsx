@@ -1,6 +1,6 @@
-import Button from "./ui/button";
+import Button from "./ui/butto";
 import BlogCard from "./blog-card";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 import { blogs } from "@/data/blog-data";
 import {
   popularPostPageButtonText,

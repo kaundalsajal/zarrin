@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 import {
   footerNavlinks,
   footerSocialMediaLinks,
   footerCopyright,
 } from "../data/footer-data";
-import { companyName } from "../data/navbar-data";
+import { companyName } from "../data/nav-bar-data";
 function Footer() {
   return (
     <footer className="container0 max-w-308 mx-auto mt-9 md:mt-12.75 flex flex-col items-center">

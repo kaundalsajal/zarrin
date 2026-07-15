@@ -1,8 +1,8 @@
-import Button from "./ui/button";
+import Button from "./ui/butto";
 import Image from "next/image";
 import { blogs } from "../data/blog-data";
 import BlogCard from "./blog-card";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 import Link from "next/link";
 import {
   recentPostPageButtonText,

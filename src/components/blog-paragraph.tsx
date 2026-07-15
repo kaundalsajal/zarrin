@@ -1,5 +1,5 @@
 import { Content } from "@/data/blog-data";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 
 function BlogParagraph({ content }: { content: Content }) {
   return (

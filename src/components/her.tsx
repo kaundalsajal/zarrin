@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { heroSection } from "../data/home-data";
-import Button from "./ui/button";
-import Typography from "./typography/typography";
+import Button from "./ui/butto";
+import Typography from "./typography/typograph";
 function Hero() {
   return (
     <div className="w-full relative flex flex-col items-center bg-primary overflow-hidden">

@@ -1,7 +1,7 @@
 import { Blog } from "../data/blog-data";
 import Image from "next/image";
 import Link from "next/link";
-import Typography from "./typography/typography";
+import Typography from "./typography/typograph";
 
 function BlogCard({ post }: { post: Blog }) {
   return (
