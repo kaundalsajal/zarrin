@@ -17,7 +17,6 @@ export const ctaButton = defineType({
       name: "href",
       title: "Button Link",
       type: "string",
-      validation: (Rule) => Rule.required(),
     }),
 
     defineField({

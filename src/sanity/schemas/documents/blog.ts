@@ -24,41 +24,54 @@ export const blog = defineType({
       options: { source: "title" },
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: "category",
       type: "string",
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: "createdAt",
       type: "date",
       initialValue: new Date().toISOString().split("T")[0],
       validation: (rule) => rule.required(),
     }),
+
+    defineField({
+      name: "excerpt",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+
     defineField({
       name: "heroImage",
-      type: "image",
+      type: "customImage",
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: "cardImage",
-      type: "image",
+      type: "customImage",
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: "isFeatured",
       type: "boolean",
       initialValue: false,
     }),
+
     defineField({
       name: "isPopular",
       type: "boolean",
       initialValue: false,
     }),
+
     defineField({
       name: "body",
       type: "array",
-      of: [{ type: "block" }, { type: "image" }, { type: "quote" }],
+      of: [{ type: "block" }, { type: "customImage" }, { type: "quote" }],
     }),
   ],
 });
