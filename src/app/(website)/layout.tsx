@@ -4,19 +4,20 @@ import NewsletterForm from "@/components/newsletter-form";
 import { client } from "@/sanity/lib/client";
 import { NAV_BAR_QUERY } from "@/sanity/queries/nav-bar-query";
 import { SanityDocument } from "next-sanity";
-import { Navbar } from "../../../sanity.types";
+import { NAV_BAR_QUERY_RESULT, Navbar } from "../../../sanity.types";
 
 export default async function WebsiteLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const navbar = (await client.fetch<SanityDocument[]>(
+  const navbar = await client.fetch<NAV_BAR_QUERY_RESULT>(
     NAV_BAR_QUERY,
-  )) as Array<Navbar>;
+  )
+  // console.log(navbar)
   return (
     <>
-      <NavBar navbar={navbar[0]}/>
+      <NavBar navbar={navbar}/>
       {children}
       <NewsletterForm />
       <Footer />

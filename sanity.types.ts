@@ -15,6 +15,111 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hero?: HeroSection;
+  featuredPost?: FeaturedPostSection;
+  recentPosts?: RecentPostsSection;
+  popularPosts?: PopularPostsSection;
+};
+
+export type PopularPostsSection = {
+  _type: "popularPostsSection";
+  label?: string;
+  ctaButton?: CtaButton;
+};
+
+export type BlogReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "blog";
+};
+
+export type RecentPostsSection = {
+  _type: "recentPostsSection";
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+};
+
+export type FeaturedPostSection = {
+  _type: "featuredPostSection";
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+};
+
+export type HeroSection = {
+  _type: "heroSection";
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+};
+
+export type CtaButton = {
+  _type: "ctaButton";
+  label?: string;
+  href?: string;
+  openInNewTab?: boolean;
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type CustomImage = {
+  _type: "customImage";
+  asset?: SanityImageAssetReference;
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
+};
+
+export type SocialLink = {
+  _type: "socialLink";
+  label?: string;
+  href?: string;
+};
+
+export type LogoReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "logo";
+};
+
+export type Footer = {
+  _id: string;
+  _type: "footer";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  logo?: LogoReference;
+  navLinks?: Array<
+    {
+      _key: string;
+    } & NavLink
+  >;
+  socialLinks?: Array<
+    {
+      _key: string;
+    } & SocialLink
+  >;
+  copyrightText?: string;
+};
+
 export type Newsletter = {
   _id: string;
   _type: "newsletter";
@@ -25,24 +130,10 @@ export type Newsletter = {
   description?: string;
 };
 
-export type CtaButton = {
-  _type: "ctaButton";
-  label?: string;
-  href?: string;
-  openInNewTab?: boolean;
-};
-
 export type NavLink = {
   _type: "navLink";
   label?: string;
   href?: string;
-};
-
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
 export type Navbar = {
@@ -51,16 +142,8 @@ export type Navbar = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  logo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  logoText?: string;
-  logoLink?: string;
-  links?: Array<
+  logo?: LogoReference;
+  navLinks?: Array<
     {
       _key: string;
     } & NavLink
@@ -68,20 +151,15 @@ export type Navbar = {
   ctaButton?: CtaButton;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
+export type Logo = {
+  _id: string;
+  _type: "logo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  logo?: CustomImage;
+  logoText?: string;
+  logoLink?: string;
 };
 
 export type Quote = {
@@ -100,20 +178,9 @@ export type Blog = {
   slug?: Slug;
   category?: string;
   createdAt?: string;
-  heroImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  cardImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
+  excerpt?: string;
+  heroImage?: CustomImage;
+  cardImage?: CustomImage;
   isFeatured?: boolean;
   isPopular?: boolean;
   body?: Array<
@@ -136,18 +203,29 @@ export type Blog = {
         _type: "block";
         _key: string;
       }
-    | {
-        asset?: SanityImageAssetReference;
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        _type: "image";
+    | ({
         _key: string;
-      }
+      } & CustomImage)
     | ({
         _key: string;
       } & Quote)
   >;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type Slug = {
@@ -254,15 +332,26 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | Newsletter
+  | HomePage
+  | PopularPostsSection
+  | BlogReference
+  | RecentPostsSection
+  | FeaturedPostSection
+  | HeroSection
   | CtaButton
-  | NavLink
   | SanityImageAssetReference
+  | CustomImage
+  | SocialLink
+  | LogoReference
+  | Footer
+  | Newsletter
+  | NavLink
   | Navbar
-  | SanityImageCrop
-  | SanityImageHotspot
+  | Logo
   | Quote
   | Blog
+  | SanityImageCrop
+  | SanityImageHotspot
   | Slug
   | SanityImagePaletteSwatch
   | SanityImagePalette
@@ -272,3 +361,42 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: src/sanity/queries/nav-bar-query.ts
+// Variable: NAV_BAR_QUERY
+// Query: *[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}
+export type NAV_BAR_QUERY_RESULT = Array<{
+  _id: string;
+  logo: {
+    logo: {
+      asset: SanityImageAssetReference | null;
+      alt: string | null;
+    } | null;
+    logoText: string | null;
+    logoLink: string | null;
+  } | null;
+  navLinks: Array<
+    {
+      _key: string;
+    } & NavLink
+  > | null;
+  ctaButton: CtaButton | null;
+}>;
+
+// Source: src/sanity/queries/newsletter-query.ts
+// Variable: NEWSLETTER_QUERY
+// Query: *[_type=="newsletter"]{_id,title,description}
+export type NEWSLETTER_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  description: string | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '*[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}': NAV_BAR_QUERY_RESULT;
+    '*[_type=="newsletter"]{_id,title,description}': NEWSLETTER_QUERY_RESULT;
+  }
+}

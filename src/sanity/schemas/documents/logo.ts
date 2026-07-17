@@ -8,7 +8,7 @@ export const logo = defineType({
     defineField({
       name: "logo",
       title: "Logo",
-      type: "image",
+      type: "customImage",
       validation: (rule) => rule.required(),
     }),
 

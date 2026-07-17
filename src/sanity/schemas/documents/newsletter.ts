@@ -11,11 +11,14 @@ export const newsletter = defineType({
       type: "string",
       validation: (rule) => rule.required(),
     }),
+
     defineField({
       name: "description",
       title: "Description",
       type: "string",
       validation: (rule) => rule.required(),
     }),
+
+    
   ],
 });

@@ -1,1 +1,3 @@
-export const NEWSLETTER_QUERY = '*[_type=="newsletter"]{_id,title,description}';
+import { defineQuery } from "next-sanity";
+
+export const NEWSLETTER_QUERY = defineQuery('*[_type=="newsletter"]{_id,title,description}');

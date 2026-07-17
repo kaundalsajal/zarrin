@@ -4,17 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "./ui/button";
 import Typography from "./typography/typography";
-import {
-  navLinks,
-  mobileSideMenuLogo,
-} from "../data/nav-bar-data";
+import { navLinks, mobileSideMenuLogo } from "../data/nav-bar-data";
 import { useState } from "react";
 import clsx from "clsx";
-import { Navbar } from "../../sanity.types";
+import { NAV_BAR_QUERY_RESULT } from "../../sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 
 type NavbarProps = {
-  navbar: Navbar;
+  navbar: NAV_BAR_QUERY_RESULT;
 };
 
 function NavBar({ navbar }: NavbarProps) {
@@ -23,21 +20,21 @@ function NavBar({ navbar }: NavbarProps) {
   const toogleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-
+  console.log(navbar);
   return (
     <nav className="w-full bg-white">
       <div className="max-w-360 relative py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between">
-        <Link href={navbar.logoLink || "/"}>
+        <Link href={"/"}>
           <div className="flex items-center gap-4">
             {/* Logo and Name */}
             <Image
-              src={navbar.logo ? urlFor(navbar.logo).url() : ""} //{companyName.logo}
+              src={navbar[0].logo?.logo ? urlFor(navbar[0].logo.logo).url() : ""} //{companyName.logo}
               alt="Company Logo"
               height={44}
               width={44}
             />
             <Typography variant="h4" className="font-extrabold">
-              {navbar.logoText || "Company Name"}
+              {navbar[0].logo?.logoText || "Company Name"}
             </Typography>
           </div>
         </Link>
@@ -46,7 +43,7 @@ function NavBar({ navbar }: NavbarProps) {
           {
             //NavBar Links
 
-            navbar.links?.map((link, index) => (
+            navbar[0].navLinks?.map((link, index) => (
               <Link href={link.href || "/"} key={index}>
                 <Typography
                   variant="body-sm"
@@ -64,10 +61,10 @@ function NavBar({ navbar }: NavbarProps) {
             width={22}
           />
 
-          <Link href={navbar.ctaButton?.href || ""}>
+          <Link href={navbar[0].ctaButton?.href || ""}>
             <Button variant="purple" className="w-45 h-14">
               <Typography variant="button" className="font-heading font-600">
-                {navbar.ctaButton?.label}
+                {navbar[0].ctaButton?.label}
               </Typography>
             </Button>
           </Link>
