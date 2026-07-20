@@ -3,6 +3,9 @@ import Button from "./ui/button";
 import Typography from "./typography/typography";
 import Image from "next/image";
 import { newsletterFormButtonText } from "@/data/pages-data";
+
+
+
 function NewsletterForm() {
   return (
     <div className="w-full mt-6.75 md:mt-28.75 lg:mt-47.75 relative bg-primary flex justify-center overflow-hidden">

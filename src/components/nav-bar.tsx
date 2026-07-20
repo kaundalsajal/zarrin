@@ -4,50 +4,52 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "./ui/button";
 import Typography from "./typography/typography";
-import {
-  companyName,
-  navLinks,
-  mobileSideMenuLogo,
-} from "../data/nav-bar-data";
+import { navLinks, mobileSideMenuLogo } from "../data/nav-bar-data";
 import { useState } from "react";
 import clsx from "clsx";
-function NavBar() {
+import { NAV_BAR_QUERY_RESULT } from "../../sanity.types";
+import { urlFor } from "@/sanity/lib/image";
+
+type NavbarProps = {
+  navbar: NAV_BAR_QUERY_RESULT;
+};
+
+function NavBar({ navbar }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toogleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-
-  console.log(isMenuOpen);
+  console.log(navbar);
   return (
     <nav className="w-full bg-white">
       <div className="max-w-360 relative py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between">
-        <Link href="/">
+        <Link href={"/"}>
           <div className="flex items-center gap-4">
             {/* Logo and Name */}
             <Image
-              src={companyName.logo}
+              src={navbar[0].logo?.logo ? urlFor(navbar[0].logo.logo).url() : ""} //{companyName.logo}
               alt="Company Logo"
               height={44}
               width={44}
             />
             <Typography variant="h4" className="font-extrabold">
-              {companyName.name}
+              {navbar[0].logo?.logoText || "Company Name"}
             </Typography>
           </div>
         </Link>
 
-        <div className="hidden md:flex items-center h-14 w-104.75 justify-between">
+        <div className="hidden md:flex items-center gap-14.5">
           {
             //NavBar Links
 
-            navLinks?.links?.map((link, index) => (
-              <Link href={link.href} key={index}>
+            navbar[0].navLinks?.map((link, index) => (
+              <Link href={link.href || "/"} key={index}>
                 <Typography
                   variant="body-sm"
                   className="font-heading font-medium hover:text-primary"
                 >
-                  {link.name}
+                  {link.label || "Link"}
                 </Typography>
               </Link>
             )) || "Links should appear here"
@@ -58,20 +60,14 @@ function NavBar() {
             height={22}
             width={22}
           />
-          {navLinks?.buttons?.map((button, index) => {
-            return (
-              <Link href={button.href} key={index}>
-                <Button variant="purple" className="w-45 h-14">
-                  <Typography
-                    variant="button"
-                    className="font-heading font-600"
-                  >
-                    {button.name}
-                  </Typography>
-                </Button>
-              </Link>
-            );
-          }) || "Button should appear here"}
+
+          <Link href={navbar[0].ctaButton?.href || ""}>
+            <Button variant="purple" className="w-45 h-14">
+              <Typography variant="button" className="font-heading font-600">
+                {navbar[0].ctaButton?.label}
+              </Typography>
+            </Button>
+          </Link>
         </div>
         <div className="md:hidden">
           <Image

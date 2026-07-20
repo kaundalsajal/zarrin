@@ -31,7 +31,8 @@ function Footer() {
       </div>
       <div className="h-10 w-48 tablet-sm:52 mt-8 md:mt-10 flex gap-2 table-sm:gap-4">
         {footerSocialMediaLinks.map((link) => (
-          <div
+          <Link
+            href={link.href}
             key={link.name}
             className="h-10 w-10 rounded-full bg-primary text-white hover:bg-white hover:border hover:text-primary flex items-center justify-center transition-all"
           >
@@ -42,7 +43,7 @@ function Footer() {
             >
               {link.name}
             </Typography>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="w-full mt-8 md:mt-10">
