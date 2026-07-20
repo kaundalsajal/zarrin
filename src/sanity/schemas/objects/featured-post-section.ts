@@ -6,6 +6,12 @@ export const featuredPostSection = defineType({
   type: "object",
   fields: [
     defineField({
+      name: "id",
+      type: "string",
+      validation: (rule) => rule.required(),
+    }),
+    
+    defineField({
       name: "label",
       title: "Label",
       type: "string",

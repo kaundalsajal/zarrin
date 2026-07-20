@@ -15,60 +15,46 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type HomePage = {
+export type GenericSection = {
+  _type: "genericSection";
+  id?: string;
+  title?: string;
+  subTitle?: string;
+  body?: string;
+  layoutType?: "hero" | "splitImageRight" | "splitImageLeft" | "textBlock";
+  mainImage?: CustomImage;
+  ctaLabel?: string;
+  ctaLink?: string;
+};
+
+export type Page = {
   _id: string;
-  _type: "homePage";
+  _type: "page";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  hero?: HeroSection;
-  featuredPost?: FeaturedPostSection;
-  recentPosts?: RecentPostsSection;
-  popularPosts?: PopularPostsSection;
-};
-
-export type PopularPostsSection = {
-  _type: "popularPostsSection";
-  label?: string;
-  ctaButton?: CtaButton;
-};
-
-export type BlogReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "blog";
-};
-
-export type RecentPostsSection = {
-  _type: "recentPostsSection";
-  label?: string;
-  featuredImage?: CustomImage;
-  blog?: BlogReference;
-  ctaButton?: CtaButton;
-};
-
-export type FeaturedPostSection = {
-  _type: "featuredPostSection";
-  label?: string;
-  featuredImage?: CustomImage;
-  blog?: BlogReference;
-  ctaButton?: CtaButton;
-};
-
-export type HeroSection = {
-  _type: "heroSection";
-  label?: string;
-  featuredImage?: CustomImage;
-  blog?: BlogReference;
-  ctaButton?: CtaButton;
-};
-
-export type CtaButton = {
-  _type: "ctaButton";
-  label?: string;
-  href?: string;
-  openInNewTab?: boolean;
+  titleIsVisible?: boolean;
+  title?: string;
+  subTitle?: string;
+  description?: string;
+  slug?: Slug;
+  sections?: Array<
+    | ({
+        _key: string;
+      } & HeroSection)
+    | ({
+        _key: string;
+      } & FeaturedPostSection)
+    | ({
+        _key: string;
+      } & PopularPostsSection)
+    | ({
+        _key: string;
+      } & RecentPostsSection)
+    | ({
+        _key: string;
+      } & GenericSection)
+  >;
 };
 
 export type SanityImageAssetReference = {
@@ -85,6 +71,74 @@ export type CustomImage = {
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
   alt?: string;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hero?: HeroSection;
+  featuredPost?: FeaturedPostSection;
+  recentPosts?: RecentPostsSection;
+  popularPosts?: PopularPostsSection;
+};
+
+export type PopularPostsSection = {
+  _type: "popularPostsSection";
+  id?: string;
+  label?: string;
+  ctaButton?: CtaButton;
+  postCount?: number;
+};
+
+export type BlogReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "blog";
+};
+
+export type RecentPostsSection = {
+  _type: "recentPostsSection";
+  id?: string;
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+  postCount?: number;
+};
+
+export type FeaturedPostSection = {
+  _type: "featuredPostSection";
+  id?: string;
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+};
+
+export type HeroSection = {
+  _type: "heroSection";
+  id?: string;
+  label?: string;
+  featuredImage?: CustomImage;
+  blog?: BlogReference;
+  ctaButton?: CtaButton;
+};
+
+export type CtaButton = {
+  _type: "ctaButton";
+  label?: string;
+  href?: string;
+  openInNewTab?: boolean;
 };
 
 export type SocialLink = {
@@ -228,12 +282,6 @@ export type SanityImageHotspot = {
   width?: number;
 };
 
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -332,6 +380,11 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | GenericSection
+  | Page
+  | SanityImageAssetReference
+  | CustomImage
+  | Slug
   | HomePage
   | PopularPostsSection
   | BlogReference
@@ -339,8 +392,6 @@ export type AllSanitySchemaTypes =
   | FeaturedPostSection
   | HeroSection
   | CtaButton
-  | SanityImageAssetReference
-  | CustomImage
   | SocialLink
   | LogoReference
   | Footer
@@ -352,7 +403,6 @@ export type AllSanitySchemaTypes =
   | Blog
   | SanityImageCrop
   | SanityImageHotspot
-  | Slug
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -361,6 +411,53 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: src/sanity/queries/blog-query.ts
+// Variable: BLOG_QUERY
+// Query: *[_type=="blog"]|order(createdAt desc)
+export type BLOG_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  category?: string;
+  createdAt?: string;
+  excerpt?: string;
+  heroImage?: CustomImage;
+  cardImage?: CustomImage;
+  isFeatured?: boolean;
+  isPopular?: boolean;
+  body?: Array<
+    | ({
+        _key: string;
+      } & CustomImage)
+    | ({
+        _key: string;
+      } & Quote)
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+  >;
+}>;
 
 // Source: src/sanity/queries/nav-bar-query.ts
 // Variable: NAV_BAR_QUERY
@@ -392,11 +489,319 @@ export type NEWSLETTER_QUERY_RESULT = Array<{
   description: string | null;
 }>;
 
+// Source: src/sanity/queries/page-query.ts
+// Variable: PAGE_QUERY
+// Query: *[_type == "page" && slug.current == $slug][0]{    titleIsVisible,    title,    subTitle,    description,    sections[]{      ...,      blog->    }  }
+export type PAGE_QUERY_RESULT = {
+  titleIsVisible: boolean | null;
+  title: string | null;
+  subTitle: string | null;
+  description: string | null;
+  sections: Array<
+    | {
+        _key: string;
+        _type: "featuredPostSection";
+        id?: string;
+        label?: string;
+        featuredImage?: CustomImage;
+        blog: {
+          _id: string;
+          _type: "blog";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          title?: string;
+          slug?: Slug;
+          category?: string;
+          createdAt?: string;
+          excerpt?: string;
+          heroImage?: CustomImage;
+          cardImage?: CustomImage;
+          isFeatured?: boolean;
+          isPopular?: boolean;
+          body?: Array<
+            | ({
+                _key: string;
+              } & CustomImage)
+            | ({
+                _key: string;
+              } & Quote)
+            | {
+                children?: Array<{
+                  marks?: Array<string>;
+                  text?: string;
+                  _type: "span";
+                  _key: string;
+                }>;
+                style?:
+                  | "blockquote"
+                  | "h1"
+                  | "h2"
+                  | "h3"
+                  | "h4"
+                  | "h5"
+                  | "h6"
+                  | "normal";
+                listItem?: "bullet" | "number";
+                markDefs?: Array<{
+                  href?: string;
+                  _type: "link";
+                  _key: string;
+                }>;
+                level?: number;
+                _type: "block";
+                _key: string;
+              }
+          >;
+        } | null;
+        ctaButton?: CtaButton;
+      }
+    | {
+        _key: string;
+        _type: "genericSection";
+        id?: string;
+        title?: string;
+        subTitle?: string;
+        body?: string;
+        layoutType?:
+          "hero" | "splitImageLeft" | "splitImageRight" | "textBlock";
+        mainImage?: CustomImage;
+        ctaLabel?: string;
+        ctaLink?: string;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "heroSection";
+        id?: string;
+        label?: string;
+        featuredImage?: CustomImage;
+        blog: {
+          _id: string;
+          _type: "blog";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          title?: string;
+          slug?: Slug;
+          category?: string;
+          createdAt?: string;
+          excerpt?: string;
+          heroImage?: CustomImage;
+          cardImage?: CustomImage;
+          isFeatured?: boolean;
+          isPopular?: boolean;
+          body?: Array<
+            | ({
+                _key: string;
+              } & CustomImage)
+            | ({
+                _key: string;
+              } & Quote)
+            | {
+                children?: Array<{
+                  marks?: Array<string>;
+                  text?: string;
+                  _type: "span";
+                  _key: string;
+                }>;
+                style?:
+                  | "blockquote"
+                  | "h1"
+                  | "h2"
+                  | "h3"
+                  | "h4"
+                  | "h5"
+                  | "h6"
+                  | "normal";
+                listItem?: "bullet" | "number";
+                markDefs?: Array<{
+                  href?: string;
+                  _type: "link";
+                  _key: string;
+                }>;
+                level?: number;
+                _type: "block";
+                _key: string;
+              }
+          >;
+        } | null;
+        ctaButton?: CtaButton;
+      }
+    | {
+        _key: string;
+        _type: "popularPostsSection";
+        id?: string;
+        label?: string;
+        ctaButton?: CtaButton;
+        postCount?: number;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "recentPostsSection";
+        id?: string;
+        label?: string;
+        featuredImage?: CustomImage;
+        blog: {
+          _id: string;
+          _type: "blog";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          title?: string;
+          slug?: Slug;
+          category?: string;
+          createdAt?: string;
+          excerpt?: string;
+          heroImage?: CustomImage;
+          cardImage?: CustomImage;
+          isFeatured?: boolean;
+          isPopular?: boolean;
+          body?: Array<
+            | ({
+                _key: string;
+              } & CustomImage)
+            | ({
+                _key: string;
+              } & Quote)
+            | {
+                children?: Array<{
+                  marks?: Array<string>;
+                  text?: string;
+                  _type: "span";
+                  _key: string;
+                }>;
+                style?:
+                  | "blockquote"
+                  | "h1"
+                  | "h2"
+                  | "h3"
+                  | "h4"
+                  | "h5"
+                  | "h6"
+                  | "normal";
+                listItem?: "bullet" | "number";
+                markDefs?: Array<{
+                  href?: string;
+                  _type: "link";
+                  _key: string;
+                }>;
+                level?: number;
+                _type: "block";
+                _key: string;
+              }
+          >;
+        } | null;
+        ctaButton?: CtaButton;
+        postCount?: number;
+      }
+  > | null;
+} | null;
+
+// Source: src/sanity/queries/popular-post-query.ts
+// Variable: POPULAR_POST_QUERY
+// Query: *[_type=="blog" && isPopular==true]|order(createdAt desc)
+export type POPULAR_POST_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  category?: string;
+  createdAt?: string;
+  excerpt?: string;
+  heroImage?: CustomImage;
+  cardImage?: CustomImage;
+  isFeatured?: boolean;
+  isPopular: true;
+  body?: Array<
+    | ({
+        _key: string;
+      } & CustomImage)
+    | ({
+        _key: string;
+      } & Quote)
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+  >;
+}>;
+
+// Source: src/sanity/queries/recent-post-query.ts
+// Variable: RECENT_POST_QUERY
+// Query: *[_type=="blog"]|order(createdAt desc)
+export type RECENT_POST_QUERY_RESULT = Array<{
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  category?: string;
+  createdAt?: string;
+  excerpt?: string;
+  heroImage?: CustomImage;
+  cardImage?: CustomImage;
+  isFeatured?: boolean;
+  isPopular?: boolean;
+  body?: Array<
+    | ({
+        _key: string;
+      } & CustomImage)
+    | ({
+        _key: string;
+      } & Quote)
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?:
+          "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+  >;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    '*[_type=="blog"]|order(createdAt desc)':
+      BLOG_QUERY_RESULT | RECENT_POST_QUERY_RESULT;
     '*[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}': NAV_BAR_QUERY_RESULT;
     '*[_type=="newsletter"]{_id,title,description}': NEWSLETTER_QUERY_RESULT;
+    '*[_type == "page" && slug.current == $slug][0]{\n    titleIsVisible,\n    title,\n    subTitle,\n    description,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': PAGE_QUERY_RESULT;
+    '*[_type=="blog" && isPopular==true]|order(createdAt desc)': POPULAR_POST_QUERY_RESULT;
   }
 }

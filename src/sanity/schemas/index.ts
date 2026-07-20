@@ -13,7 +13,8 @@ import { heroSection } from "./objects/hero-section";
 import { recentPostsSection } from "./objects/recent-posts-section";
 import { popularPostsSection } from "./objects/popular-posts-section";
 import { featuredPostSection } from "./objects/featured-post-section";
-import { homepage } from "./documents/homepage";
+import { page } from "./documents/page";
+import { genericSection } from "./objects/generic-section";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -31,6 +32,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     recentPostsSection,
     popularPostsSection,
     featuredPostSection,
-    homepage,
+    page,
+    genericSection
   ],
 };

@@ -14,7 +14,6 @@ export default async function WebsiteLayout({
   const navbar = await client.fetch<NAV_BAR_QUERY_RESULT>(
     NAV_BAR_QUERY,
   )
-  // console.log(navbar)
   return (
     <>
       <NavBar navbar={navbar}/>

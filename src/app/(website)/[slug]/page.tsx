@@ -1,37 +1,24 @@
-// import Hero from "@/components/hero";
-// import FeaturedBlog from "@/components/featured-blog";
-// import PopularPost from "@/components/popular-post";
-// import RecentPost from "@/components/recent-post";
-
-// export default function Home() {
-//   return (
-//     <div className="flex flex-col items-center">
-//       <Hero section={} />
-//       <FeaturedBlog />
-//       <RecentPost />
-//       <PopularPost section={section} />
-//     </div>
-//   );
-// }
-
 import Typography from "@/components/typography/typography";
 import { client } from "@/sanity/lib/client";
 import { PAGE_QUERY } from "@/sanity/queries/page-query";
 import React from "react";
-
+import { PAGE_QUERY_RESULT } from "../../../../sanity.types";
 import Hero from "@/components/hero";
 import FeaturedBlog from "@/components/featured-blog";
 import RecentBlog from "@/components/recent-post";
 import PopularPost from "@/components/popular-post";
 import GenericSection from "@/components/generic-section";
-import { PAGE_QUERY_RESULT } from "../../../sanity.types";
 
-async function Page() {
+type Props = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-  const page: PAGE_QUERY_RESULT = await client.fetch(PAGE_QUERY, {
-    slug: "home",
-  });
-
+async function Page({ params }: Props) {
+  const { slug } = await params;
+  const page: PAGE_QUERY_RESULT = await client.fetch(PAGE_QUERY, { slug });
+  console.log(page);
   return (
     <div className="w-full">
       {page?.titleIsVisible && (
@@ -72,7 +59,7 @@ async function Page() {
         } else if (section._type === "recentPostsSection") {
           return <RecentBlog section={section} key={index} />;
         } else if (section._type === "popularPostsSection") {
-          return <PopularPost section={section} key={index} />;
+          // return <PopularPost section={section} blogCount={4} key={index} />;
         } else if (section._type === "genericSection") {
           return <GenericSection key={index} section={section} />;
         } else {
