@@ -14,16 +14,16 @@ export const genericSection = defineType({
     }),
 
     defineField({
+      name: "label",
+      title: "Overline/Label",
+      type: "string",
+      description: "A smaller text line above or below the title.",
+    }),
+    defineField({
       name: "title",
       title: "Section Title",
       type: "string",
       description: "The primary headline for this section.",
-    }),
-    defineField({
-      name: "subTitle",
-      title: "Subtitle / Overline",
-      type: "string",
-      description: "A smaller text line above or below the title.",
     }),
     defineField({
       name: "body",
@@ -76,14 +76,13 @@ export const genericSection = defineType({
   // This makes the Sanity studio preview look beautiful and recognizable
   preview: {
     select: {
-      title: "title",
+      title: "id",
       subtitle: "layoutType",
       media: "mainImage",
     },
-    prepare({ title, subtitle, media }) {
+    prepare({ title, media }) {
       return {
         title: title || "Untitled Section",
-        subtitle: `Layout: ${subtitle || "Not selected"}`,
         media: media,
       };
     },

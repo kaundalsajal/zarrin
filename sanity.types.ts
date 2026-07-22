@@ -18,8 +18,8 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type GenericSection = {
   _type: "genericSection";
   id?: string;
+  label?: string;
   title?: string;
-  subTitle?: string;
   body?: string;
   layoutType?: "hero" | "splitImageRight" | "splitImageLeft" | "textBlock";
   mainImage?: CustomImage;
@@ -33,10 +33,7 @@ export type Page = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  titleIsVisible?: boolean;
   label?: string;
-  title?: string;
-  description?: string;
   slug?: Slug;
   sections?: Array<
     | ({
@@ -66,6 +63,9 @@ export type Page = {
     | ({
         _key: string;
       } & ImageSection)
+    | ({
+        _key: string;
+      } & HeaderSection)
   >;
 };
 
@@ -89,6 +89,14 @@ export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
+};
+
+export type HeaderSection = {
+  _type: "headerSection";
+  id?: string;
+  label?: string;
+  title?: string;
+  description?: string;
 };
 
 export type ImageSection = {
@@ -426,6 +434,7 @@ export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | CustomImage
   | Slug
+  | HeaderSection
   | ImageSection
   | TextCard
   | HowWeWorkSection
@@ -583,12 +592,9 @@ export type NEWSLETTER_QUERY_RESULT = Array<{
 
 // Source: src/sanity/queries/page-query.ts
 // Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    titleIsVisible,    title,    label,    description,    sections[]{      ...,      blog->    }  }
+// Query: *[_type == "page" && slug.current == $slug][0]{    label,    sections[]{      ...,      blog->    }  }
 export type PAGE_QUERY_RESULT = {
-  titleIsVisible: boolean | null;
-  title: string | null;
   label: string | null;
-  description: string | null;
   sections: Array<
     | {
         _key: string;
@@ -715,14 +721,23 @@ export type PAGE_QUERY_RESULT = {
         _key: string;
         _type: "genericSection";
         id?: string;
+        label?: string;
         title?: string;
-        subTitle?: string;
         body?: string;
         layoutType?:
           "hero" | "splitImageLeft" | "splitImageRight" | "textBlock";
         mainImage?: CustomImage;
         ctaLabel?: string;
         ctaLink?: string;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "headerSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
         blog: null;
       }
     | {
@@ -877,12 +892,9 @@ export type PAGE_QUERY_RESULT = {
 
 // Source: src/sanity/queries/page-query.ts
 // Variable: BLOGS_PAGE_QUERY
-// Query: *[_type == "page" && slug.current == "blog"][0]{    titleIsVisible,    title,    label,    description,    sections[]{      ...,      blog->    }  }
+// Query: *[_type == "page" && slug.current == "blog"][0]{    label,    sections[]{      ...,      blog->    }  }
 export type BLOGS_PAGE_QUERY_RESULT = {
-  titleIsVisible: boolean | null;
-  title: string | null;
   label: string | null;
-  description: string | null;
   sections: Array<
     | {
         _key: string;
@@ -1009,14 +1021,23 @@ export type BLOGS_PAGE_QUERY_RESULT = {
         _key: string;
         _type: "genericSection";
         id?: string;
+        label?: string;
         title?: string;
-        subTitle?: string;
         body?: string;
         layoutType?:
           "hero" | "splitImageLeft" | "splitImageRight" | "textBlock";
         mainImage?: CustomImage;
         ctaLabel?: string;
         ctaLink?: string;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "headerSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
         blog: null;
       }
     | {
@@ -1171,12 +1192,9 @@ export type BLOGS_PAGE_QUERY_RESULT = {
 
 // Source: src/sanity/queries/page-query.ts
 // Variable: BLOG_PAGE_QUERY
-// Query: *[_type == "page" && slug.current == "blog/"][0]{    titleIsVisible,    title,    label,    description,    sections[]{      ...,      blog->    }  }
+// Query: *[_type == "page" && slug.current == "blog/"][0]{    label,    sections[]{      ...,      blog->    }  }
 export type BLOG_PAGE_QUERY_RESULT = {
-  titleIsVisible: boolean | null;
-  title: string | null;
   label: string | null;
-  description: string | null;
   sections: Array<
     | {
         _key: string;
@@ -1303,14 +1321,23 @@ export type BLOG_PAGE_QUERY_RESULT = {
         _key: string;
         _type: "genericSection";
         id?: string;
+        label?: string;
         title?: string;
-        subTitle?: string;
         body?: string;
         layoutType?:
           "hero" | "splitImageLeft" | "splitImageRight" | "textBlock";
         mainImage?: CustomImage;
         ctaLabel?: string;
         ctaLink?: string;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "headerSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
         blog: null;
       }
     | {
@@ -1565,9 +1592,9 @@ declare module "@sanity/client" {
     '*[_type=="blog" && slug.current==$slug][0]': BLOG_QUERY_RESULT;
     '*[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}': NAV_BAR_QUERY_RESULT;
     '*[_type=="newsletter"]{_id,title,description}': NEWSLETTER_QUERY_RESULT;
-    '*[_type == "page" && slug.current == $slug][0]{\n    titleIsVisible,\n    title,\n    label,\n    description,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': PAGE_QUERY_RESULT;
-    '*[_type == "page" && slug.current == "blog"][0]{\n    titleIsVisible,\n    title,\n    label,\n    description,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': BLOGS_PAGE_QUERY_RESULT;
-    '*[_type == "page" && slug.current == "blog/"][0]{\n    titleIsVisible,\n    title,\n    label,\n    description,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': BLOG_PAGE_QUERY_RESULT;
+    '*[_type == "page" && slug.current == $slug][0]{\n    label,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': PAGE_QUERY_RESULT;
+    '*[_type == "page" && slug.current == "blog"][0]{\n    label,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': BLOGS_PAGE_QUERY_RESULT;
+    '*[_type == "page" && slug.current == "blog/"][0]{\n    label,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': BLOG_PAGE_QUERY_RESULT;
     '*[_type=="blog" && isPopular==true]|order(createdAt desc)': POPULAR_POST_QUERY_RESULT;
     '*[_type=="blog" && isPopular == false]|order(createdAt desc)': RECENT_POST_QUERY_RESULT;
   }

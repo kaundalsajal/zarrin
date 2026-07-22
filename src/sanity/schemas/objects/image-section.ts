@@ -15,4 +15,10 @@ export const imageSection = defineType({
       type: "customImage",
     }),
   ],
+  preview:{
+    select:{
+      title:"id",
+      media:"displayImage"
+    }
+  }
 });

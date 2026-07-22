@@ -17,21 +17,16 @@ function AboutUsCard({ card }: { card: TextCard }) {
         </Typography>
       )}
       {card.description && (
-        <Typography
-          variant="body-sm"
-          color="muted"
-          className="mt-4"
-        >
+        <Typography variant="body-sm" color="muted" className="mt-4">
           <span className="group-hover:text-white">{card.description}</span>
         </Typography>
       )}
       {card.button && (
-        <Link href={card.button.href || "/"}>
-          <Typography
-            variant="caption"
-            className="underline underline-offset-6 decoration-4 font-bold mt-8 transition-transform duration-400 translate-x-12.5 group-hover:translate-x-0"
-            color="white"
-          >
+        <Link
+          href={card.button.href || "/"}
+          className="underline underline-offset-6 decoration-4 font-bold mt-8 transition-transform duration-400 translate-x-12.5 group-hover:translate-x-0 text-white"
+        >
+          <Typography variant="caption" color="white">
             {card.button.label || "Learn More"}
           </Typography>
         </Link>

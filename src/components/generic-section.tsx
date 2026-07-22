@@ -57,11 +57,11 @@ function GenericSection({ section }: { section: GenericSection }) {
       <div
         className={`relative z-10 ${contentWidthClasses} ${textColorClass} animate-slide-in-left flex flex-col ${isCentered ? "items-center" : ""}`}
       >
-        {section.subTitle && (
+        {section.label && (
           <div>
             {/* Added dynamic color class to match layout styling context */}
             <Typography variant="body-sm" className={textColorClass}>
-              {section.subTitle}
+              {section.label}
             </Typography>
           </div>
         )}
