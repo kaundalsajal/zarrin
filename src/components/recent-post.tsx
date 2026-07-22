@@ -28,7 +28,7 @@ async function RecentBlog({
   const recentBlogs = (
     await client.fetch<RECENT_POST_QUERY_RESULT>(RECENT_POST_QUERY)
   )
-    .filter((blog) => !blog.isFeatured && blog.slug != section.blog?.slug)
+    .filter((blog) => !blog.isFeatured && blog.slug?.current != section.blog?.slug?.current)
     .slice(0, section.postCount);
 
   // console.log("no of posts",recentBlogs.length)

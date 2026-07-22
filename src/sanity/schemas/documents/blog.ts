@@ -74,4 +74,10 @@ export const blog = defineType({
       of: [{ type: "block" }, { type: "customImage" }, { type: "quote" }],
     }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      media: "cardImage",
+    },
+  },
 });

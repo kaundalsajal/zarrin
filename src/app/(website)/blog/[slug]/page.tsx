@@ -25,7 +25,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
             <Typography
               variant="body-sm"
               color="secondary"
-              className="font-heading font-bold"
+              className="font-heading font-bold capitalize"
             >
               {page.label}
             </Typography>

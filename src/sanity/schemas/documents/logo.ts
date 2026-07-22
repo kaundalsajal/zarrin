@@ -24,4 +24,10 @@ export const logo = defineType({
       validation: (rule) => rule.required(),
     }),
   ],
+  preview: {
+    select: {
+      title: "logoText",
+      media: "logo",
+    },
+  },
 });

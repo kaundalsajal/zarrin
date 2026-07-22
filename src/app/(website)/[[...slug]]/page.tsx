@@ -36,7 +36,7 @@ async function Page({ params }: Props) {
             <Typography
               variant="body-sm"
               color="secondary"
-              className="font-heading font-bold"
+              className="font-heading font-bold capitalize"
             >
               {page.label}
             </Typography>
