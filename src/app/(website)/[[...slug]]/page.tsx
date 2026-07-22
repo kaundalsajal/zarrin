@@ -8,28 +8,37 @@ import FeaturedBlog from "@/components/featured-blog";
 import RecentBlog from "@/components/recent-post";
 import PopularPost from "@/components/popular-post";
 import GenericSection from "@/components/generic-section";
+import { notFound } from "next/navigation";
+import BlogSection from "@/components/blog-section";
+import BlogCardSection from "@/components/blog-card-section";
 
-type Props = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
+interface Props {
+  params: Promise<{ slug?: string[] }>;
+}
 async function Page({ params }: Props) {
   const { slug } = await params;
-  const page: PAGE_QUERY_RESULT = await client.fetch(PAGE_QUERY, { slug });
-  console.log(page);
+  const page: PAGE_QUERY_RESULT = await client.fetch(PAGE_QUERY, {
+    slug: slug ? slug?.join("/") : "home",
+  });
+
+  if (!page) notFound();
+
+  let blogSlug = "";
+  if (slug && slug[0] === "blog") {
+    blogSlug = slug[1];
+  }
+
   return (
     <div className="w-full">
       {page?.titleIsVisible && (
         <div className="max-w-360 px-5 md:px-18.75 lg:px-26 mx-auto mt-15 md:mt-18 flex flex-col justify-center items-center">
-          {page?.subTitle && (
+          {page?.label && (
             <Typography
               variant="body-sm"
               color="secondary"
               className="font-heading font-bold"
             >
-              {page.subTitle}
+              {page.label}
             </Typography>
           )}
           {page?.title && (
@@ -59,9 +68,15 @@ async function Page({ params }: Props) {
         } else if (section._type === "recentPostsSection") {
           return <RecentBlog section={section} key={index} />;
         } else if (section._type === "popularPostsSection") {
-          // return <PopularPost section={section} blogCount={4} key={index} />;
+          return <PopularPost section={section} key={index} />;
         } else if (section._type === "genericSection") {
           return <GenericSection key={index} section={section} />;
+        } else if (section._type === "blogSection") {
+          return (
+            <BlogSection key={index} section={section} blogSlug={blogSlug} />
+          );
+        } else if (section._type === "blogCardSection") {
+          return <BlogCardSection key={index} section={section} />;
         } else {
           return <>{console.error("Unknown section type")}</>;
         }

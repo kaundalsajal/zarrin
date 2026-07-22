@@ -26,10 +26,10 @@ function Typography({
 }) {
   const styles = {
     h1: "font-heading text-[36px] md:text-[46px] lg:text-[64px]",
-    h2: "font-heading text-[52px]",
+    h2: "font-heading text-[32px] md:text-[42px] lg:text-[52px]", // Added responsive scale for consistency
     h3: "font-heading text-[24px] md:text-[37px] lg:text-[48px]",
     h4: "font-heading text-[24px] lg:text-[32px]",
-    h5: "font-heading text-[26px]",
+    h5: "font-heading text-[20px] lg:text-[26px]", // Added responsive scale for consistency
     h6: "font-heading text-[17px] lg:text-[24px]",
 
     "body-lg": "font-body text-[13px] lg:text-[18px] leading-6",

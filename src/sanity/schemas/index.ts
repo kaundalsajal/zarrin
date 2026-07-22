@@ -15,6 +15,8 @@ import { popularPostsSection } from "./objects/popular-posts-section";
 import { featuredPostSection } from "./objects/featured-post-section";
 import { page } from "./documents/page";
 import { genericSection } from "./objects/generic-section";
+import { blogSection } from "./objects/blog-section";
+import { blogCardSection } from "./objects/blog-card-section";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -32,6 +34,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     recentPostsSection,
     popularPostsSection,
     featuredPostSection,
+    blogSection,
+    blogCardSection,
     page,
     genericSection
   ],

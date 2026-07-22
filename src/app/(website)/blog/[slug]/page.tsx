@@ -1,62 +1,75 @@
-import { blogs } from "@/data/blog-data";
 import Typography from "@/components/typography/typography";
-import BlogParagraph from "@/components/blog-paragraph";
-import BlogQuote from "@/components/blog-quote";
-import Image from "next/image";
+import { BLOG_PAGE_QUERY } from "@/sanity/queries/page-query";
+import { client } from "@/sanity/lib/client";
+import BlogCardSection from "@/components/blog-card-section";
+import BlogSection from "@/components/blog-section";
+import GenericSection from "@/components/generic-section";
 import PopularPost from "@/components/popular-post";
+import RecentBlog from "@/components/recent-post";
+import FeaturedBlog from "@/components/featured-blog";
+import Hero from "@/components/hero";
+import { BLOG_PAGE_QUERY_RESULT } from "../../../../../sanity.types";
+import { notFound } from "next/navigation";
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const blogPost = blogs.find((blog) => blog.slug === slug);
+  
+  const page: BLOG_PAGE_QUERY_RESULT = await client.fetch(BLOG_PAGE_QUERY);
+  if (!page) notFound();
 
   return (
-    <div className="max-w-360 mx-auto flex flex-col items-center">
-      <div className="mt-3 md:mt-18 mx-auto px-5 md:px-18.75 lg:px-26">
-        <div className="max-w-5xl  mt-10 flex gap-3">
-          <Typography variant="overline" className="font-bold">
-            {blogPost?.category || "Blog Category"}
-          </Typography>
-          <Typography variant="overline" color="muted" className="font-medium">
-            {blogPost?.date || "Blog Date"}
-          </Typography>
+    <div className="w-full">
+      {page?.titleIsVisible && (
+        <div className="max-w-360 px-5 md:px-18.75 lg:px-26 mx-auto mt-15 md:mt-18 flex flex-col justify-center items-center">
+          {page?.label && (
+            <Typography
+              variant="body-sm"
+              color="secondary"
+              className="font-heading font-bold"
+            >
+              {page.label}
+            </Typography>
+          )}
+          {page?.title && (
+            <Typography
+              variant="h3"
+              className="font-bold font-heading max-w-182 text-center mt-4.5 lg:mt-6.25"
+            >
+              {page.title}
+            </Typography>
+          )}
+          {page?.description && (
+            <Typography
+              variant="body-sm"
+              color="secondary"
+              className="max-w-252.5 font-heading text-center mt-6 md:mt-4 lg:mt-6"
+            >
+              {page.description}
+            </Typography>
+          )}
         </div>
-        <div className="max-w-5xl mt-4">
-          <Typography variant="h3" className="font-bold">
-            {blogPost?.title || "Blog Title"}
-          </Typography>
-        </div>
-      </div>
-
-      <div className="mx-6 md:mx-auto ">
-        <Image
-          alt="Featured Image"
-          src={blogPost?.heroImage || ""}
-          height={608}
-          width={1232}
-          className="rounded-2xl mt-8.25 md:mt-0[46px] lg:mt-14"
-        />
-      </div>
-      <div className="px-5 md:px-18.75 lg:px-26 mx-auto">
-        {blogPost?.content?.map((content, index) => {
-          if (content.type === "paragraph") {
-            return <BlogParagraph content={content} key={index} />;
-          } else if (content.type === "quote") {
-            return <BlogQuote content={content} key={index} />;
-          } else if (content.type === "image") {
-            return (
-              <Image
-                key={index}
-                alt="Blog Image"
-                src={content.src || ""}
-                height={312}
-                width={816}
-                className="rounded-2xl mx-auto my-8 md:my-0 md:mt-5 lg:mt-10"
-              />
-            );
-          }
-        })}
-      </div>
-      <PopularPost blogCount={3} currentPost={slug} />
+      )}
+      {page?.sections?.map((section, index) => {
+        if (section._type === "heroSection") {
+          return <Hero section={section} key={index} />;
+        } else if (section._type === "featuredPostSection") {
+          return <FeaturedBlog section={section} key={index} />;
+        } else if (section._type === "recentPostsSection") {
+          return <RecentBlog section={section} key={index} />;
+        } else if (section._type === "popularPostsSection") {
+          return (
+            <PopularPost currentPost={slug} section={section} key={index} />
+          );
+        } else if (section._type === "genericSection") {
+          return <GenericSection key={index} section={section} />;
+        } else if (section._type === "blogSection") {
+          return <BlogSection blogSlug={slug} key={index} section={section} />;
+        } else if (section._type === "blogCardSection") {
+          return <BlogCardSection key={index} section={section} />;
+        } else {
+          return <>{console.error("Unknown section type")}</>;
+        }
+      })}
     </div>
   );
 }

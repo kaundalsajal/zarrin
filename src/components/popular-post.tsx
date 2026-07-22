@@ -17,6 +17,7 @@ type PopularPostProps = {
 };
 
 async function PopularPost({ section, currentPost }: PopularPostProps) {
+
   const queryResult =
     await client.fetch<POPULAR_POST_QUERY_RESULT>(POPULAR_POST_QUERY);
 
@@ -24,7 +25,7 @@ async function PopularPost({ section, currentPost }: PopularPostProps) {
 
   if (currentPost) {
     popularPost = queryResult
-      .filter((blog) => blog.isPopular && blog.slug?.toString() !== currentPost)
+      .filter((blog) => blog.isPopular && blog.slug?.current !== currentPost)
       .slice(0, section.postCount);
   }
 

@@ -9,8 +9,8 @@ export const page = defineType({
       type: "boolean",
       initialValue: false,
     }),
+    defineField({ name: "label", type: "string" }),
     defineField({ name: "title", type: "string" }),
-    defineField({ name: "subTitle", type: "string" }),
     defineField({ name: "description", type: "text" }),
     defineField({
       name: "slug",
@@ -26,8 +26,15 @@ export const page = defineType({
         { type: "featuredPostSection" },
         { type: "popularPostsSection" },
         { type: "recentPostsSection" },
+        { type: "blogSection" },
+        { type: "blogCardSection" },
         { type: "genericSection" },
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: "label",
+    },
+  },
 });

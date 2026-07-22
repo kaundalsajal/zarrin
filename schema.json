@@ -139,7 +139,7 @@
         },
         "optional": true
       },
-      "subTitle": {
+      "label": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -226,6 +226,36 @@
                 "rest": {
                   "type": "inline",
                   "name": "recentPostsSection"
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "blogSection"
+                }
+              },
+              {
+                "type": "object",
+                "attributes": {
+                  "_key": {
+                    "type": "objectAttribute",
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "rest": {
+                  "type": "inline",
+                  "name": "blogCardSection"
                 }
               },
               {
@@ -365,76 +395,7 @@
     }
   },
   {
-    "name": "homePage",
-    "type": "document",
-    "attributes": {
-      "_id": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        }
-      },
-      "_type": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string",
-          "value": "homePage"
-        }
-      },
-      "_createdAt": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        }
-      },
-      "_updatedAt": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        }
-      },
-      "_rev": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        }
-      },
-      "hero": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "heroSection"
-        },
-        "optional": true
-      },
-      "featuredPost": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "featuredPostSection"
-        },
-        "optional": true
-      },
-      "recentPosts": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "recentPostsSection"
-        },
-        "optional": true
-      },
-      "popularPosts": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "inline",
-          "name": "popularPostsSection"
-        },
-        "optional": true
-      }
-    }
-  },
-  {
-    "name": "popularPostsSection",
+    "name": "blogCardSection",
     "type": "type",
     "value": {
       "type": "object",
@@ -443,7 +404,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "popularPostsSection"
+            "value": "blogCardSection"
           }
         },
         "id": {
@@ -457,21 +418,6 @@
           "type": "objectAttribute",
           "value": {
             "type": "string"
-          },
-          "optional": true
-        },
-        "ctaButton": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "ctaButton"
-          },
-          "optional": true
-        },
-        "postCount": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "number"
           },
           "optional": true
         }
@@ -509,7 +455,7 @@
     }
   },
   {
-    "name": "recentPostsSection",
+    "name": "blogSection",
     "type": "type",
     "value": {
       "type": "object",
@@ -518,7 +464,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "recentPostsSection"
+            "value": "blogSection"
           }
         },
         "id": {
@@ -535,34 +481,11 @@
           },
           "optional": true
         },
-        "featuredImage": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "customImage"
-          },
-          "optional": true
-        },
         "blog": {
           "type": "objectAttribute",
           "value": {
             "type": "inline",
             "name": "blog.reference"
-          },
-          "optional": true
-        },
-        "ctaButton": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "ctaButton"
-          },
-          "optional": true
-        },
-        "postCount": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "number"
           },
           "optional": true
         }
@@ -580,60 +503,6 @@
           "value": {
             "type": "string",
             "value": "featuredPostSection"
-          }
-        },
-        "id": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "label": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        },
-        "featuredImage": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "customImage"
-          },
-          "optional": true
-        },
-        "blog": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "blog.reference"
-          },
-          "optional": true
-        },
-        "ctaButton": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "inline",
-            "name": "ctaButton"
-          },
-          "optional": true
-        }
-      }
-    }
-  },
-  {
-    "name": "heroSection",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "heroSection"
           }
         },
         "id": {
@@ -708,6 +577,166 @@
           "type": "objectAttribute",
           "value": {
             "type": "boolean"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "popularPostsSection",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "popularPostsSection"
+          }
+        },
+        "id": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "label": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "ctaButton": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "ctaButton"
+          },
+          "optional": true
+        },
+        "postCount": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "recentPostsSection",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "recentPostsSection"
+          }
+        },
+        "id": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "label": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "featuredImage": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "customImage"
+          },
+          "optional": true
+        },
+        "blog": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blog.reference"
+          },
+          "optional": true
+        },
+        "ctaButton": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "ctaButton"
+          },
+          "optional": true
+        },
+        "postCount": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "number"
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
+    "name": "heroSection",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "heroSection"
+          }
+        },
+        "id": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "label": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "featuredImage": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "customImage"
+          },
+          "optional": true
+        },
+        "blog": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "blog.reference"
+          },
+          "optional": true
+        },
+        "ctaButton": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "inline",
+            "name": "ctaButton"
           },
           "optional": true
         }

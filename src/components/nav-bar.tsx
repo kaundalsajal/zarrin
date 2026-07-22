@@ -20,7 +20,7 @@ function NavBar({ navbar }: NavbarProps) {
   const toogleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-  console.log(navbar);
+  // console.log(navbar);
   return (
     <nav className="w-full bg-white">
       <div className="max-w-360 relative py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between">
