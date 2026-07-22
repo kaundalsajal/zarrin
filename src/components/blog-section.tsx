@@ -9,6 +9,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { PortableText, PortableTextComponents } from "next-sanity";
 import BlogParagraph from "./blog-paragraph";
 import BlogQuote from "./blog-quote";
+import { notFound } from "next/navigation";
 
 interface BlogSectionProps {
   blogSlug?:string,
@@ -24,6 +25,9 @@ async function BlogSection({ blogSlug, section }: BlogSectionProps) {
   const blog = await client.fetch<BLOG_QUERY_RESULT>(BLOG_QUERY, {
     slug: blogSlug,
   });
+  if(!blog){
+    notFound()
+  }
   const components: PortableTextComponents = {
     types: {
       customImage: ({ value }) => {

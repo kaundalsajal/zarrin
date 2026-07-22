@@ -17,6 +17,9 @@ import { page } from "./documents/page";
 import { genericSection } from "./objects/generic-section";
 import { blogSection } from "./objects/blog-section";
 import { blogCardSection } from "./objects/blog-card-section";
+import { howWeWorkSection } from "./objects/how-we-work-section";
+import { textCard } from "./objects/text-card";
+import { imageSection } from "./objects/image-section";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -36,7 +39,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     featuredPostSection,
     blogSection,
     blogCardSection,
+    howWeWorkSection,
+    textCard,
+    imageSection,
     page,
-    genericSection
+    genericSection,
   ],
 };

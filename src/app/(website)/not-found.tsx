@@ -6,8 +6,8 @@ import Link from "next/link";
 function Page() {
   return (
     <div className="max-w-204 my-6 md:my-25 mx-auto px-7.5">
-      <div className=" bg-primary rounded-2xl flex flex-col justify-center items-center relative  py-11.5 md:py-20">
-        <div className="hidden md:block absolute -top-75">
+      <div className=" bg-primary rounded-2xl flex flex-col justify-center items-center relative  py-11.5 md:py-20 overflow-hidden">
+        <div className="hidden md:block absolute -top-75 ">
           <Image
             alt="Waves Design"
             src="/hero/Vector (1).png"

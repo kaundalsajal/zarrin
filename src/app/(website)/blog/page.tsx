@@ -12,6 +12,8 @@ import RecentBlog from "@/components/recent-post";
 import FeaturedBlog from "@/components/featured-blog";
 import Hero from "@/components/hero";
 import { notFound } from "next/navigation";
+import HowWeWorkSection from "@/components/how-we-work-section";
+import ImageSection from "@/components/image-section";
 
 async function Page() {
 
@@ -26,7 +28,7 @@ async function Page() {
             <Typography
               variant="body-sm"
               color="secondary"
-              className="font-heading font-bold capitalize"
+              className="font-heading font-bold uppercase"
             >
               {page.label}
             </Typography>
@@ -62,11 +64,13 @@ async function Page() {
         } else if (section._type === "genericSection") {
           return <GenericSection key={index} section={section} />;
         } else if (section._type === "blogSection") {
-          return (
-            <BlogSection key={index} section={section}/>
-          );
+          return <BlogSection key={index} section={section} />;
         } else if (section._type === "blogCardSection") {
           return <BlogCardSection key={index} section={section} />;
+        } else if (section._type === "howWeWorkSection") {
+          return <HowWeWorkSection key={index} section={section} />;
+        } else if (section._type === "imageSection") {
+          return <ImageSection key={index} section={section} />;
         } else {
           return <>{console.error("Unknown section type")}</>;
         }

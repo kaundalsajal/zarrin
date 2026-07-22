@@ -10,6 +10,8 @@ import FeaturedBlog from "@/components/featured-blog";
 import Hero from "@/components/hero";
 import { BLOG_PAGE_QUERY_RESULT } from "../../../../../sanity.types";
 import { notFound } from "next/navigation";
+import HowWeWorkSection from "@/components/how-we-work-section";
+import ImageSection from "@/components/image-section";
 
 async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -25,7 +27,7 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
             <Typography
               variant="body-sm"
               color="secondary"
-              className="font-heading font-bold capitalize"
+              className="font-heading font-bold uppercase"
             >
               {page.label}
             </Typography>
@@ -66,6 +68,10 @@ async function Page({ params }: { params: Promise<{ slug: string }> }) {
           return <BlogSection blogSlug={slug} key={index} section={section} />;
         } else if (section._type === "blogCardSection") {
           return <BlogCardSection key={index} section={section} />;
+        } else if (section._type === "howWeWorkSection") {
+          return <HowWeWorkSection key={index} section={section} />;
+        } else if (section._type === "imageSection") {
+          return <ImageSection key={index} section={section} />;
         } else {
           return <>{console.error("Unknown section type")}</>;
         }

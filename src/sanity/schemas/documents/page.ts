@@ -15,7 +15,7 @@ export const page = defineType({
     defineField({
       name: "slug",
       type: "slug",
-      options: { source: "title" },
+      options: { source: "label" },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -29,6 +29,8 @@ export const page = defineType({
         { type: "blogSection" },
         { type: "blogCardSection" },
         { type: "genericSection" },
+        { type: "howWeWorkSection" },
+        { type: "imageSection" },
       ],
     }),
   ],

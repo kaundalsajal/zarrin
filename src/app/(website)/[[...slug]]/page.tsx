@@ -11,6 +11,8 @@ import GenericSection from "@/components/generic-section";
 import { notFound } from "next/navigation";
 import BlogSection from "@/components/blog-section";
 import BlogCardSection from "@/components/blog-card-section";
+import HowWeWorkSection from "@/components/how-we-work-section";
+import ImageSection from "@/components/image-section";
 
 interface Props {
   params: Promise<{ slug?: string[] }>;
@@ -36,7 +38,7 @@ async function Page({ params }: Props) {
             <Typography
               variant="body-sm"
               color="secondary"
-              className="font-heading font-bold capitalize"
+              className="font-heading font-bold uppercase"
             >
               {page.label}
             </Typography>
@@ -77,6 +79,10 @@ async function Page({ params }: Props) {
           );
         } else if (section._type === "blogCardSection") {
           return <BlogCardSection key={index} section={section} />;
+        } else if (section._type === "howWeWorkSection") {
+          return <HowWeWorkSection key={index} section={section} />;
+        } else if (section._type === "imageSection") {
+          return <ImageSection key={index} section={section} />;
         } else {
           return <>{console.error("Unknown section type")}</>;
         }

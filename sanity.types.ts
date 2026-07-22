@@ -34,8 +34,8 @@ export type Page = {
   _updatedAt: string;
   _rev: string;
   titleIsVisible?: boolean;
-  title?: string;
   label?: string;
+  title?: string;
   description?: string;
   slug?: Slug;
   sections?: Array<
@@ -60,6 +60,12 @@ export type Page = {
     | ({
         _key: string;
       } & GenericSection)
+    | ({
+        _key: string;
+      } & HowWeWorkSection)
+    | ({
+        _key: string;
+      } & ImageSection)
   >;
 };
 
@@ -83,6 +89,40 @@ export type Slug = {
   _type: "slug";
   current?: string;
   source?: string;
+};
+
+export type ImageSection = {
+  _type: "imageSection";
+  id?: string;
+  displayImage?: CustomImage;
+};
+
+export type TextCard = {
+  _type: "textCard";
+  label?: string;
+  title?: string;
+  description?: string;
+  button?: CtaButton;
+};
+
+export type HowWeWorkSection = {
+  _type: "howWeWorkSection";
+  id?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  cards?: Array<
+    {
+      _key: string;
+    } & TextCard
+  >;
+};
+
+export type CtaButton = {
+  _type: "ctaButton";
+  label?: string;
+  href?: string;
+  openInNewTab?: boolean;
 };
 
 export type BlogCardSection = {
@@ -112,13 +152,6 @@ export type FeaturedPostSection = {
   featuredImage?: CustomImage;
   blog?: BlogReference;
   ctaButton?: CtaButton;
-};
-
-export type CtaButton = {
-  _type: "ctaButton";
-  label?: string;
-  href?: string;
-  openInNewTab?: boolean;
 };
 
 export type PopularPostsSection = {
@@ -203,6 +236,7 @@ export type Navbar = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  label?: string;
   logo?: LogoReference;
   navLinks?: Array<
     {
@@ -392,11 +426,14 @@ export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | CustomImage
   | Slug
+  | ImageSection
+  | TextCard
+  | HowWeWorkSection
+  | CtaButton
   | BlogCardSection
   | BlogReference
   | BlogSection
   | FeaturedPostSection
-  | CtaButton
   | PopularPostsSection
   | RecentPostsSection
   | HeroSection
@@ -748,6 +785,27 @@ export type PAGE_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "howWeWorkSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & TextCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "imageSection";
+        id?: string;
+        displayImage?: CustomImage;
+        blog: null;
+      }
+    | {
+        _key: string;
         _type: "popularPostsSection";
         id?: string;
         label?: string;
@@ -1021,6 +1079,27 @@ export type BLOGS_PAGE_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "howWeWorkSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & TextCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "imageSection";
+        id?: string;
+        displayImage?: CustomImage;
+        blog: null;
+      }
+    | {
+        _key: string;
         _type: "popularPostsSection";
         id?: string;
         label?: string;
@@ -1291,6 +1370,27 @@ export type BLOG_PAGE_QUERY_RESULT = {
           >;
         } | null;
         ctaButton?: CtaButton;
+      }
+    | {
+        _key: string;
+        _type: "howWeWorkSection";
+        id?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & TextCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "imageSection";
+        id?: string;
+        displayImage?: CustomImage;
+        blog: null;
       }
     | {
         _key: string;
