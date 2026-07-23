@@ -594,6 +594,34 @@ export type BLOG_QUERY_RESULT = {
   >;
 } | null;
 
+// Source: src/sanity/queries/footer-query.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type=="footer"][0]{_id,logo->,navLinks,socialLinks,copyrightText}
+export type FOOTER_QUERY_RESULT = {
+  _id: string;
+  logo: {
+    _id: string;
+    _type: "logo";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    logo?: CustomImage;
+    logoText?: string;
+    logoLink?: string;
+  } | null;
+  navLinks: Array<
+    {
+      _key: string;
+    } & NavLink
+  > | null;
+  socialLinks: Array<
+    {
+      _key: string;
+    } & SocialLink
+  > | null;
+  copyrightText: string | null;
+} | null;
+
 // Source: src/sanity/queries/nav-bar-query.ts
 // Variable: NAV_BAR_QUERY
 // Query: *[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}
@@ -1684,6 +1712,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type=="blog"]|order(createdAt desc)[$start...$end]': BLOGS_QUERY_RESULT;
     '*[_type=="blog" && slug.current==$slug][0]': BLOG_QUERY_RESULT;
+    '*[_type=="footer"][0]{_id,logo->,navLinks,socialLinks,copyrightText}': FOOTER_QUERY_RESULT;
     '*[_type=="navbar"]{_id,logo->{logo{asset,alt},logoText,logoLink},navLinks,ctaButton}': NAV_BAR_QUERY_RESULT;
     '*[_type=="newsletter"]{_id,title,description}': NEWSLETTER_QUERY_RESULT;
     '*[_type == "page" && slug.current == $slug][0]{\n    label,\n    sections[]{\n      ...,\n      blog->\n    }\n  }': PAGE_QUERY_RESULT;

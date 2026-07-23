@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { NAV_BAR_QUERY_RESULT } from "../../sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 
-type NavbarProps = {
+interface NavbarProps {
   navbar: NAV_BAR_QUERY_RESULT;
 };
 
@@ -53,10 +53,10 @@ function NavBar({ navbar }: NavbarProps) {
   return (
     <nav
       className={clsx(
-        "w-full transition-all duration-300 ease-in-out",
+        "w-full bg-white",
         isSticky
-          ? "fixed top-0 left-0 z-50 bg-white shadow-[3px_1px_43px_0px_rgba(124,78,228,0.2)] translate-y-0"
-          : " z-50 bg-transparent",
+          ? "fixed top-0 left-0 z-50 shadow-[3px_1px_43px_0px_rgba(124,78,228,0.2)] animate-slide-in-top"
+          : " z-50",
       )}
     >
       <div className="max-w-360 relative py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between">

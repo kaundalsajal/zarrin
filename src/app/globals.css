@@ -18,6 +18,7 @@
   /* Animations */
 
   --animate-slide-in-left: slide-in-left 0.8s ease-in;
+  --animate-slide-in-top: slide-in-top 0.4s ease-in;
   --animate-image: fade-in 0.8s ease-in;
   --animate-waves: waves 1s ease-in infinite;
 }
@@ -45,7 +46,17 @@
   }
 }
 
-@keyframes waves {
+@keyframes slide-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* @keyframes waves {
   0%,
   100% {
     transform: translate(8px, 8px);
@@ -54,7 +65,7 @@
   50% {
     transform: translate(-8px, -8px);
   }
-}
+} */
 /* @layer components {
   .container-custom {
     @apply w-full max-w-7xl mx-auto px-4;

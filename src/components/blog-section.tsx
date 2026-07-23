@@ -33,15 +33,15 @@ async function BlogSection({ blogSlug, section }: BlogSectionProps) {
       customImage: ({ value }) => {
         // console.log(value);
         return (
-          <figure className="mx-auto my-8 md:my-0 md:mt-5 lg:mt-10">
+          <div className="my-8 md:my-0 md:mt-5 lg:mt-10">
             <Image
               alt={value.alt || ""}
               src={urlFor(value).url()}
               height={312}
               width={816}
-              className="rounded-2xl"
+              className="rounded-2xl mx-auto "
             />
-          </figure>
+          </div>
         );
       },
       quote: ({ value }) => <BlogQuote value={value} />,

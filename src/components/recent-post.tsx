@@ -43,14 +43,16 @@ async function RecentBlog({
         <Typography variant="h3" className="font-bold">
           {section.label || "Our Recent Post"}
         </Typography>
-        <Button
-          variant="purple"
-          className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
-        >
-          <Typography variant="button" color="white">
-            {section.ctaButton?.label}
-          </Typography>
-        </Button>
+        <Link href={section.ctaButton?.href || "/"}>
+          <Button
+            variant="purple"
+            className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
+          >
+            <Typography variant="button" color="white">
+              {section.ctaButton?.label}
+            </Typography>
+          </Button>
+        </Link>
       </div>
       {section.blog && (
         <div className="mt-16 lg:mt-22.5 hidden md:flex md:flex-row flex-col gap-14">

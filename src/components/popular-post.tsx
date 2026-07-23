@@ -7,6 +7,7 @@ import {
 } from "../../sanity.types";
 import { client } from "@/sanity/lib/client";
 import { POPULAR_POST_QUERY } from "@/sanity/queries/popular-post-query";
+import Link from "next/link";
 
 type PopularPostProps = {
   section: Extract<
@@ -17,7 +18,6 @@ type PopularPostProps = {
 };
 
 async function PopularPost({ section, currentPost }: PopularPostProps) {
-
   const queryResult =
     await client.fetch<POPULAR_POST_QUERY_RESULT>(POPULAR_POST_QUERY);
 
@@ -35,14 +35,16 @@ async function PopularPost({ section, currentPost }: PopularPostProps) {
         <Typography variant="h3" className="font-bold">
           {section.label}
         </Typography>
-        <Button
-          variant="purple"
-          className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
-        >
-          <Typography variant="button" color="white">
-            {section.ctaButton?.label}
-          </Typography>
-        </Button>
+        <Link href={section.ctaButton?.href || "/"}>
+          <Button
+            variant="purple"
+            className="h-9.5 w-26.25 lg:h-13.25 lg:w-36.75"
+          >
+            <Typography variant="button" color="white">
+              {section.ctaButton?.label}
+            </Typography>
+          </Button>
+        </Link>
       </div>
       <div className="mt-15.25 grid place-items-center  md:grid-cols-3 tablet-sm:grid-cols-2 grid-cols-1 gap-4 gap-y-10">
         {popularPost?.map((blog, index) => (

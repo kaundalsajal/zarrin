@@ -29,7 +29,7 @@ function Section({
         } else if (section._type === "recentPostsSection") {
           return <RecentBlog section={section} key={index} />;
         } else if (section._type === "popularPostsSection") {
-          return <PopularPost section={section} key={index} />;
+          return <PopularPost section={section} key={index} currentPost={blogSlug}/>;
         } else if (section._type === "genericSection") {
           return <GenericSection key={index} section={section} />;
         } else if (section._type === "blogSection") {

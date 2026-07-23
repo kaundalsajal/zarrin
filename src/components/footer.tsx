@@ -7,41 +7,56 @@ import {
   footerCopyright,
 } from "../data/footer-data";
 import { companyName } from "../data/nav-bar-data";
-function Footer() {
+import { FOOTER_QUERY_RESULT } from "../../sanity.types";
+import { urlFor } from "@/sanity/lib/image";
+
+interface FooterProps {
+  footer: FOOTER_QUERY_RESULT;
+}
+function Footer({ footer }: FooterProps) {
   return (
     <footer className="container0 max-w-308 mx-auto mt-9 md:mt-12.75 flex flex-col items-center">
       <div className="flex items-center gap-4">
-        <Image alt="logo" src={companyName.logo} height={44} width={44} />
+        <Image
+          alt={footer?.logo?.logo?.alt || "logo"}
+          src={
+            footer?.logo?.logo
+              ? urlFor(footer.logo.logo).url()
+              : companyName.logo
+          }
+          height={44}
+          width={44}
+        />
         <Typography variant="h4" className="font-extrabold">
-          {companyName.name}
+          {footer?.logo?.logoText || companyName.name}
         </Typography>
       </div>
       <div className="w-50 md:w-65.5 lg:w-91.5 mt-8 md:mt-10 flex items-center justify-between">
-        {footerNavlinks.map((link, index) => (
+        {footer?.navLinks?.map((link, index) => (
           <Link
-            href={link.href}
+            href={link.href || "/"}
             key={index}
             className=" text-foreground hover:text-primary"
           >
             <Typography variant="button" className="font-700 font-heading">
-              {link.name}
+              {link.label}
             </Typography>
           </Link>
         ))}
       </div>
       <div className="h-10 w-48 tablet-sm:52 mt-8 md:mt-10 flex gap-2 table-sm:gap-4">
-        {footerSocialMediaLinks.map((link) => (
+        {footer?.socialLinks?.map((link, index) => (
           <Link
-            href={link.href}
-            key={link.name}
-            className="h-10 w-10 rounded-full bg-primary text-white hover:bg-white hover:border hover:text-primary flex items-center justify-center transition-all"
+            href={link.href || "/"}
+            key={index}
+            className="h-10 w-10 rounded-full bg-primary text-white hover:bg-white hover:border hover:text-primary flex items-center justify-center transition-all duration-400 ease-in"
           >
             <Typography
               variant="button"
               color="white"
               className="font-700 font-heading"
             >
-              {link.name}
+              {link.label}
             </Typography>
           </Link>
         ))}
@@ -51,7 +66,7 @@ function Footer() {
       </div>
       <div className="my-10 text-center">
         <Typography variant="body-sm" className="font-400 font-heading">
-          {footerCopyright}
+          {footer?.copyrightText || footerCopyright}
         </Typography>
       </div>
     </footer>

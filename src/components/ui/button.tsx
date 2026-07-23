@@ -9,7 +9,7 @@ interface ButtonProps extends React.ComponentProps<"button"> {
 
 function Button({ variant, className = "", children, ...props }: ButtonProps) {
   const baseStyle =
-    "rounded-[8px] flex justify-center items-center cursor-pointer transition-all ease-in duration-400";
+    "rounded-[8px] flex justify-center items-center cursor-pointer transition-all ease-in duration-300";
   const variants = {
     purple:
       "bg-primary text-white hover:bg-white border border-primary hover:text-primary",
