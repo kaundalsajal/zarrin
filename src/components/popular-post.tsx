@@ -30,7 +30,7 @@ async function PopularPost({ section, currentPost }: PopularPostProps) {
   }
 
   return (
-    <div className="max-w-360 mt-24.5 px-5 md:px-18.75 lg:px-26 mx-auto">
+    <section className="max-w-360 mt-24.5 px-5 md:px-18.75 lg:px-26 mx-auto">
       <div className="continer flex justify-between">
         <Typography variant="h3" className="font-bold">
           {section.label}
@@ -49,7 +49,7 @@ async function PopularPost({ section, currentPost }: PopularPostProps) {
           <BlogCard blog={blog} key={index} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

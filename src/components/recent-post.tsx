@@ -35,7 +35,7 @@ async function RecentBlog({
   // const featuredPost = blogs.find((blog) => blog.isFeatured);
 
   return (
-    <div className="max-w-360 lg:mt-20.25 px-5 md:px-18.75 lg:px-26 mx-auto">
+    <section className="max-w-360 lg:mt-20.25 px-5 md:px-18.75 lg:px-26 mx-auto">
       <div className="flex justify-between items-center">
         <Typography variant="h3" className="font-bold">
           {section.label || "Our Recent Post"}
@@ -98,7 +98,7 @@ async function RecentBlog({
           <BlogCard blog={post} key={index} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

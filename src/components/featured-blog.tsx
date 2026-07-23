@@ -18,7 +18,7 @@ function FeaturedBlog({
   // const featuredBlog = blogs.findLast((blog) => blog.isFeatured);
 
   return (
-    <div className="flex justify-center max-w-360 my-10.5 md:my-23.5 lg:my-32.75 px-6 md:px-18.5 lg:px-26 mx-auto">
+    <section className="flex justify-center max-w-360 my-10.5 md:my-23.5 lg:my-32.75 px-6 md:px-18.5 lg:px-26 mx-auto">
       <div className=" max-w-360 flex flex-col p-4.5 md:p-0 md:border-0 border border-gray-300 rounded-[11px] md:rounded-0 md:relative md:pb-32">
         <Image
           alt={section.featuredImage?.alt || "Featured Blog Image"}
@@ -63,7 +63,7 @@ function FeaturedBlog({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

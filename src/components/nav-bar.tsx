@@ -5,8 +5,9 @@ import Link from "next/link";
 import Button from "./ui/button";
 import Typography from "./typography/typography";
 import { navLinks, mobileSideMenuLogo } from "../data/nav-bar-data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { usePathname } from "next/navigation";
 import { NAV_BAR_QUERY_RESULT } from "../../sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -16,23 +17,60 @@ type NavbarProps = {
 
 function NavBar({ navbar }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
-  const toogleMenu = () => {
+  const pathname = usePathname();
+
+  const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-  // console.log(navbar);
+
+
+  useEffect(() => {
+
+    const timeout = setTimeout(() => {
+      const trigger = document.getElementById("nav-trigger");
+
+      if (!trigger) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsSticky(!entry.isIntersecting);
+        },
+        {
+          threshold: 0,
+        },
+      );
+
+      observer.observe(trigger);
+
+      return () => observer.disconnect();
+    }, 0);
+
+    return () => clearTimeout(timeout);
+  }, [pathname]);
+
   return (
-    <nav className="w-full bg-white">
+    <nav
+      className={clsx(
+        "w-full transition-all duration-300 ease-in-out",
+        isSticky
+          ? "fixed top-0 left-0 z-50 bg-white shadow-[3px_1px_43px_0px_rgba(124,78,228,0.2)] translate-y-0"
+          : " z-50 bg-transparent",
+      )}
+    >
       <div className="max-w-360 relative py-5 mx-auto md:py-3 lg:py-5.25 px-5 md:px-18.75 lg:px-26 flex items-center justify-between">
-        <Link href={"/"}>
+        <Link href="/">
           <div className="flex items-center gap-4">
-            {/* Logo and Name */}
             <Image
-              src={navbar[0].logo?.logo ? urlFor(navbar[0].logo.logo).url() : ""} //{companyName.logo}
+              src={
+                navbar[0].logo?.logo ? urlFor(navbar[0].logo.logo).url() : ""
+              }
               alt="Company Logo"
               height={44}
               width={44}
             />
+
             <Typography variant="h4" className="font-extrabold">
               {navbar[0].logo?.logoText || "Company Name"}
             </Typography>
@@ -40,20 +78,17 @@ function NavBar({ navbar }: NavbarProps) {
         </Link>
 
         <div className="hidden md:flex items-center gap-14.5">
-          {
-            //NavBar Links
+          {navbar[0].navLinks?.map((link, index) => (
+            <Link href={link.href || "/"} key={index}>
+              <Typography
+                variant="body-sm"
+                className="font-heading font-medium hover:text-primary"
+              >
+                {link.label || "Link"}
+              </Typography>
+            </Link>
+          ))}
 
-            navbar[0].navLinks?.map((link, index) => (
-              <Link href={link.href || "/"} key={index}>
-                <Typography
-                  variant="body-sm"
-                  className="font-heading font-medium hover:text-primary"
-                >
-                  {link.label || "Link"}
-                </Typography>
-              </Link>
-            )) || "Links should appear here"
-          }
           <Image
             alt="Search Icon"
             src="/nav-bar/search-minus.png"
@@ -69,15 +104,17 @@ function NavBar({ navbar }: NavbarProps) {
             </Button>
           </Link>
         </div>
+
         <div className="md:hidden">
           <Image
             alt="Mobile side menu logo"
             src={mobileSideMenuLogo}
             height={34}
             width={34}
-            onClick={toogleMenu}
-          ></Image>
+            onClick={toggleMenu}
+          />
         </div>
+
         <div
           className={clsx(
             isMenuOpen ? "block" : "hidden",
@@ -89,7 +126,7 @@ function NavBar({ navbar }: NavbarProps) {
               href={link.href}
               key={index}
               className="py-3 border-b border-gray-300 text-center"
-              onClick={toogleMenu}
+              onClick={toggleMenu}
             >
               <Typography
                 variant="body-lg"
@@ -98,25 +135,23 @@ function NavBar({ navbar }: NavbarProps) {
                 {link.name}
               </Typography>
             </Link>
-          )) || "Links should appear here"}
+          ))}
 
-          {navLinks?.buttons?.map((button, index) => {
-            return (
-              <Link
-                href={button.href}
-                key={index}
-                className="py-3 border-b border-gray-300 text-center"
-                onClick={toogleMenu}
+          {navLinks?.buttons?.map((button, index) => (
+            <Link
+              href={button.href}
+              key={index}
+              className="py-3 border-b border-gray-300 text-center"
+              onClick={toggleMenu}
+            >
+              <Typography
+                variant="body-lg"
+                className="font-heading font-medium hover:text-primary"
               >
-                <Typography
-                  variant="body-lg"
-                  className="font-heading font-medium hover:text-primary"
-                >
-                  {button.name}
-                </Typography>
-              </Link>
-            );
-          }) || "Button should appear here"}
+                {button.name}
+              </Typography>
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

@@ -10,7 +10,7 @@ function ContactCard({ card }: { card: ContactCard }) {
       <div className="w-17.5 aspect-square flex justify-center items-center rounded-full bg-primary">
         <Image
           alt={card.icon?.alt || "Card Image"}
-          src={card.icon ? urlFor(card.icon).url() : ""}
+          src={card.icon ? urlFor(card.icon).url() : "/contact-us/phone-icon.png"}
           height={24}
           width={24}
         />
