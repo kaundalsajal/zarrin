@@ -28,7 +28,10 @@ async function RecentBlog({
   const recentBlogs = (
     await client.fetch<RECENT_POST_QUERY_RESULT>(RECENT_POST_QUERY)
   )
-    .filter((blog) => !blog.isFeatured && blog.slug?.current != section.blog?.slug?.current)
+    .filter(
+      (blog) =>
+        !blog.isFeatured && blog.slug?.current != section.blog?.slug?.current,
+    )
     .slice(0, section.postCount);
 
   // console.log("no of posts",recentBlogs.length)
@@ -49,47 +52,49 @@ async function RecentBlog({
           </Typography>
         </Button>
       </div>
-      <div className="mt-16 lg:mt-22.5 hidden md:flex md:flex-row flex-col gap-14">
-        <div className="basis-550">
-          <Image
-            alt={section.featuredImage?.alt || "Recent Post"}
-            src={
-              section.featuredImage ? urlFor(section.featuredImage).url() : ""
-            }
-            height={456}
-            width={712}
-          />
+      {section.blog && (
+        <div className="mt-16 lg:mt-22.5 hidden md:flex md:flex-row flex-col gap-14">
+          <div className="basis-550">
+            <Image
+              alt={section.featuredImage?.alt || "Recent Post"}
+              src={
+                section.featuredImage ? urlFor(section.featuredImage).url() : ""
+              }
+              height={456}
+              width={712}
+            />
+          </div>
+          <div>
+            <div className="flex gap-3">
+              <Typography variant="overline" className="font-bold">
+                {section.blog?.category}
+              </Typography>
+              <Typography variant="overline" className="text-text-muted">
+                {formatDate(section.blog?.createdAt)}
+              </Typography>
+            </div>
+            <div className="mt-4">
+              <Typography variant="h4" className="font-bold">
+                {section.blog?.title}
+              </Typography>
+            </div>
+            <div className="mt-3">
+              <Typography variant="body-sm" className="line-clamp-5">
+                {section.blog?.excerpt}
+              </Typography>
+            </div>
+            <div className="mt-6 lg:mt-9.5">
+              <Link href={`/blog/${section.blog?.slug?.current}`}>
+                <Button variant="purpleOutline" className="w-31.25 h-10">
+                  <Typography variant="button" color="primary">
+                    {section.ctaButton?.label}
+                  </Typography>
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
-        <div>
-          <div className="flex gap-3">
-            <Typography variant="overline" className="font-bold">
-              {section.blog?.category}
-            </Typography>
-            <Typography variant="overline" className="text-text-muted">
-              {formatDate(section.blog?.createdAt)}
-            </Typography>
-          </div>
-          <div className="mt-4">
-            <Typography variant="h4" className="font-bold">
-              {section.blog?.title}
-            </Typography>
-          </div>
-          <div className="mt-3">
-            <Typography variant="body-sm" className="line-clamp-5">
-              {section.blog?.excerpt}
-            </Typography>
-          </div>
-          <div className="mt-6 lg:mt-9.5">
-            <Link href={`/blog/${section.blog?.slug?.current}`}>
-              <Button variant="purpleOutline" className="w-31.25 h-10">
-                <Typography variant="button" color="primary">
-                  {section.ctaButton?.label}
-                </Typography>
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      )}
 
       {/* Recent Post Cards */}
 
