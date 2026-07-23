@@ -25,6 +25,8 @@ export const page = defineType({
         { type: "howWeWorkSection" },
         { type: "imageSection" },
         { type: "headerSection" },
+        { type: "cardSection" },
+        { type: "contactFormSection" },
       ],
     }),
   ],

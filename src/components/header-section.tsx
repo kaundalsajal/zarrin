@@ -1,12 +1,14 @@
 import Typography from "./typography/typography";
 import { PAGE_QUERY_RESULT } from "../../sanity.types";
 
-type HeaderSectionProps = Extract<
-  NonNullable<NonNullable<PAGE_QUERY_RESULT>["sections"]>[number],
-  { _type: "headerSection" }
->;
+interface HeaderSectionProps {
+  section: Extract<
+    NonNullable<NonNullable<PAGE_QUERY_RESULT>["sections"]>[number],
+    { _type: "headerSection" }
+  >;
+}
 
-function HeaderSection({ section }: { section: HeaderSectionProps }) {
+function HeaderSection({ section }: HeaderSectionProps) {
   return (
     <section
       id={section.id}

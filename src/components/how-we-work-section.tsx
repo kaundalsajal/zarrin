@@ -3,12 +3,12 @@ import AboutUsCard from "./about-us-card";
 import Typography from "./typography/typography";
 import type { HowWeWorkSection, PAGE_QUERY_RESULT } from "../../sanity.types";
 
-type HowWeWorkSectionProps = Extract<
+interface HowWeWorkSectionProps {section: Extract<
   NonNullable<NonNullable<PAGE_QUERY_RESULT>["sections"]>[number],
   { _type: "howWeWorkSection" }
->;
+>};
 
-function HowWeWorkSection({ section }:{section: HowWeWorkSectionProps}) {
+function HowWeWorkSection({ section }:HowWeWorkSectionProps) {
   return (
     <section id={section.id} className="max-w-360 px-5 md:px-18.75 lg:px-26 mx-auto pt-15 md:pt-18">
       {section.label && (

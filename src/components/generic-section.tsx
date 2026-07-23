@@ -1,12 +1,19 @@
 import React from "react";
 import Typography from "./typography/typography";
-import type { GenericSection } from "../../sanity.types";
+import type { GenericSection, PAGE_QUERY_RESULT } from "../../sanity.types";
 import Link from "next/link";
 import Button from "./ui/button";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
-function GenericSection({ section }: { section: GenericSection }) {
+interface GenericSectionProps {
+  section: Extract<
+    NonNullable<NonNullable<PAGE_QUERY_RESULT>["sections"]>[number],
+    { _type: "genericSection" }
+  >;
+}
+
+function GenericSection({section}:GenericSectionProps) {
   const layout = section.layoutType || "splitImageRight";
 
   const isHero = layout === "hero";

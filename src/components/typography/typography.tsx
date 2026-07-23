@@ -21,7 +21,7 @@ function Typography({
 }: {
   variant: TypographyVariant;
   children: React.ReactNode;
-  color?: "primary" | "foreground" | "secondary" | "muted" | "white";
+  color?: "primary" | "foreground" | "secondary" | "muted" | "white" |"gray";
   className?: string;
 }) {
   const styles = {

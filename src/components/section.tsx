@@ -1,4 +1,3 @@
-import React from "react";
 import Hero from "./hero";
 import FeaturedBlog from "./featured-blog";
 import RecentBlog from "./recent-post";
@@ -10,6 +9,8 @@ import HowWeWorkSection from "./how-we-work-section";
 import ImageSection from "./image-section";
 import { PAGE_QUERY_RESULT } from "../../sanity.types";
 import HeaderSection from "./header-section";
+import CardSection from "./card-section";
+import ContactFormSection from "./contact-form-section";
 
 function Section({
   page,
@@ -43,7 +44,12 @@ function Section({
           return <ImageSection key={index} section={section} />;
         } else if (section._type === "headerSection") {
           return <HeaderSection key={index} section={section} />;
-        } else {
+        } else if (section._type === "cardSection") {
+          return <CardSection key={index} section={section} />;
+        } else if(section._type==="contactFormSection"){
+          return <ContactFormSection key={index} section={section}/>
+        }
+          else {
           return <>{console.error("Unknown section type")}</>;
         }
       })}

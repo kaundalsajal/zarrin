@@ -3,12 +3,12 @@ import type { ImageSection, PAGE_QUERY_RESULT } from "../../sanity.types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
-type ImageSectionProps = Extract<
+interface ImageSectionProps {section:Extract<
   NonNullable<NonNullable<PAGE_QUERY_RESULT>["sections"]>[number],
   { _type: "imageSection" }
->;
+>};
 
-function ImageSection({ section }: { section: ImageSectionProps }) {
+function ImageSection({ section }: ImageSectionProps ) {
   return (
     <section
       id={section.id}

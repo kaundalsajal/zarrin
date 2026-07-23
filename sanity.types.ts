@@ -15,6 +15,31 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type ContactFormSection = {
+  _type: "contactFormSection";
+  id?: string;
+  backgroundImage?: CustomImage;
+  label?: string;
+};
+
+export type CardSection = {
+  _type: "cardSection";
+  id?: string;
+  label?: string;
+  cards?: Array<
+    {
+      _key: string;
+    } & ContactCard
+  >;
+};
+
+export type ContactCard = {
+  _type: "contactCard";
+  icon?: CustomImage;
+  title?: string;
+  body?: string;
+};
+
 export type GenericSection = {
   _type: "genericSection";
   id?: string;
@@ -66,6 +91,12 @@ export type Page = {
     | ({
         _key: string;
       } & HeaderSection)
+    | ({
+        _key: string;
+      } & CardSection)
+    | ({
+        _key: string;
+      } & ContactFormSection)
   >;
 };
 
@@ -429,6 +460,9 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
+  | ContactFormSection
+  | CardSection
+  | ContactCard
   | GenericSection
   | Page
   | SanityImageAssetReference
@@ -658,6 +692,26 @@ export type PAGE_QUERY_RESULT = {
               }
           >;
         } | null;
+      }
+    | {
+        _key: string;
+        _type: "cardSection";
+        id?: string;
+        label?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & ContactCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "contactFormSection";
+        id?: string;
+        backgroundImage?: CustomImage;
+        label?: string;
+        blog: null;
       }
     | {
         _key: string;
@@ -961,6 +1015,26 @@ export type BLOGS_PAGE_QUERY_RESULT = {
       }
     | {
         _key: string;
+        _type: "cardSection";
+        id?: string;
+        label?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & ContactCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "contactFormSection";
+        id?: string;
+        backgroundImage?: CustomImage;
+        label?: string;
+        blog: null;
+      }
+    | {
+        _key: string;
         _type: "featuredPostSection";
         id?: string;
         label?: string;
@@ -1258,6 +1332,26 @@ export type BLOG_PAGE_QUERY_RESULT = {
               }
           >;
         } | null;
+      }
+    | {
+        _key: string;
+        _type: "cardSection";
+        id?: string;
+        label?: string;
+        cards?: Array<
+          {
+            _key: string;
+          } & ContactCard
+        >;
+        blog: null;
+      }
+    | {
+        _key: string;
+        _type: "contactFormSection";
+        id?: string;
+        backgroundImage?: CustomImage;
+        label?: string;
+        blog: null;
       }
     | {
         _key: string;

@@ -2,7 +2,6 @@ import { client } from "@/sanity/lib/client";
 import type { BlogCardSection, BLOGS_QUERY_RESULT } from "../../sanity.types";
 import { BLOGS_QUERY } from "@/sanity/queries/blog-query";
 import BlogCard from "./blog-card";
-import Typography from "./typography/typography";
 
 
 type BlogCardSectionProps = {
@@ -19,7 +18,6 @@ async function BlogCardSection({section}:BlogCardSectionProps) {
           <BlogCard blog={blog} key={index} />
         ))}
       </div>
-      <div></div>
     </section>
   );
 }
