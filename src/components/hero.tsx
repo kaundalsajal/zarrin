@@ -63,6 +63,7 @@ function Hero({ section }: { section: HeroSectionProps }) {
         </div>
         <div className="container max-w-152">
           <Image
+            fetchPriority="high"
             alt={section.featuredImage?.alt || "Hero Image"}
             src={
               section.featuredImage ? urlFor(section.featuredImage).url() : ""
@@ -70,6 +71,7 @@ function Hero({ section }: { section: HeroSectionProps }) {
             height={576}
             width={608}
             className="animate-image"
+            loading="eager"
           />
         </div>
       </div>
